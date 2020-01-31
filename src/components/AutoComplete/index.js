@@ -16,10 +16,6 @@ import {
 
 import Items from './Items'
 
-import {
-    grayPri
-} from '../../assets/styles/colors'
-
 function AutoComplete() {
 
     const [items, setItems] = useState([])
@@ -27,7 +23,7 @@ function AutoComplete() {
     const [autoCompleteValue, setAutoCompleteValue] = useState('')
 
     useEffect(() => {
-        const getItems = async () => {
+        const makeGetItems = async () => {
             setIsLoading(true)
             const response = await getSymbolsAutoComplete(autoCompleteValue)
             setItems(response.bestMatches)
@@ -35,7 +31,7 @@ function AutoComplete() {
         }
 
         if (autoCompleteValue !== '') {
-            getItems()
+            makeGetItems()
         } else {
             setItems([])
         }
@@ -53,7 +49,7 @@ function AutoComplete() {
                 onChange={(e) => setAutoCompleteValue(e.target.value)}
                 InputProps={{
                     endAdornment: <InputAdornment position="end">
-                        { isLoading && <CircularProgress size='2rem' color={grayPri} /> }
+                        { isLoading && <CircularProgress size='2rem' color={'primary'} /> }
                     </InputAdornment>
                 }}
                 fullWidth
