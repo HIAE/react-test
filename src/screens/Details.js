@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import {
     Container,
     Box,
-    CircularProgress
+    CircularProgress,
+    Grid
 } from '@material-ui/core'
 
 import {
@@ -41,9 +42,15 @@ function Details(props) {
                     <CircularProgress size='6rem' color={'primary'} />}
 
                 {!isLoading &&
-                    <Box>
-
-                    </Box>}
+                    daily != null &&
+                        <Grid 
+                            xs={12}
+                            item
+                        >
+                            <h1>
+                                {symbol}
+                            </h1>
+                        </Grid>}
             </GridContainerDetails>
         </Container>
     )
