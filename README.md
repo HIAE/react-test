@@ -55,7 +55,7 @@ Ufa... agora, respira, e não pira!
 * Queremos acompanhar a evolução do seu desenvolvimento. Se possível, deixe o histórico de commits. (diferencial)
 
 Agora sim. Finalizamos por aqui.  
-Faça um fork desse projeto, e ao final, submit a PR and good look! :D  
+Faça um fork desse projeto, e ao final, submit a PR and good luck! :D  
 Quando tiver dúvidas, ou encontrar algum problema, abra uma issue. Estaremos de olho.  
 
 Beijos e queijos <3
