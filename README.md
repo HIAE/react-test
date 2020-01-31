@@ -1,68 +1,73 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esse projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app). (Vamos adiantar algumas coisas por aqui hehe!)
 
-## Available Scripts
+## hiae-react-test
+Seja muito bem vindo.  
+Sim, mas é claro! Se vc chegou até aqui, considere-se importante para nós.  
 
-In the project directory, you can run:
+Esse teste foi desenvolvido especialmente para vc. E sabemos que vc tem as skills necessárias para finalizá-lo.  
+Ok... se ainda estiver perdido, dá uma olhada na descrição da vaga:
 
-### `yarn start`
+[[São Paulo] Front-end/React Developer no Hospital Israelita Albert Eistein][https://github.com/react-brasil/vagas/issues/562]
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+[https://github.com/react-brasil/vagas/issues/562]: https://github.com/react-brasil/vagas/issues/562
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Cerimônias a parte, vamos ao que interessa!  
+Esse teste tem como objetivo a criação de uma aplicação para exibir valores de ações, através de chamadas em uma API.  
+Teremos 2 telas para tal:
+* Home
+    * Mostre um campo autocomplete (Olha a dica haha) que lista os símbolos/nome de empresas. (Ex: FB, listará Facebook e mais algumas empresas, etc...)
+* Details
+    * Aqui mostraremos os detalhes do símbolo que vc selecionou na tela anterior, alem de campos para filtros por data: de/para
 
-### `yarn test`
+#### API  
+Nós vamos utilizar a API do [Alpha Advantage][https://www.alphavantage.co/documentation/].  
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Busca de Símbolos: [Search Endpoint][https://www.alphavantage.co/documentation/#symbolsearch]  
+Informações de ações para cada símbolo: [Daily][https://www.alphavantage.co/documentation/#daily] (estamos interessados apenas no `close`)
+> Vc deve enviar o `apikey` em todas as requisições. Acesse [aqui][https://www.alphavantage.co/support/#api-key] e solicite uma `apikey`. It's freeeee!
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Desafio 1
+* Utilize o endpoint `Search Endpoint` para buscar os items na API e preencher o campo de autocomplete.  
+* Além disso, ao selecionar um item do autocomplete, precisamos mover o usuário para a página de detalhes: `:symbol/details`.  
+> dica: vc pode utilizar o axios como client para requisições. Mas se estiver familiarizado com outro client, fique a vontade.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+#### Desafio 2
+* Faça uma requisição para o endpoint `Daily` e guarde os dados retornados no estado, para futuras filtragens.  
+* Monte um gráfico com a evolução do valor das ações.
+> dica: utilize o recharts para montagem do gráfico.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Desafio 3
+* Nossa aplicação não possui testes. É interessante que possamos garantir o funcionamento de cada componente e integração.  
+* Garanta também que seus componentes não sejam re-renderizados (a menos que necessário).  
 
-### `yarn eject`
+Ufa... agora, respira, e não pira!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Desafios Extras
+* Crie containers para centralizar sua lógica, e componentes de apresentação reutilizáveis.
+* Nós não possuímos um layout definido, apenas um [wireframe][https://github.com/HIAE/react-test/tree/master/specs]. Mas capriche na apresentação (nós utilizamos o [Material UI][https://material-ui.com/])
+* Não se esqueça dos amiguinhos do mobile. Será que conseguimos tornar nossa applicação responsiva?
+* Como desenvolvedor front-end, vc não pode, em hipoteze alguma, esquecer da semântica. Uma `<div>` não pode ficar dentro de um `<p>`;
+* Animação à la [Bloomberg](https://www.bloomberg.com): exibir em formato de marquee o valor e variação percentual de ações gerais
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Mais dicas...
+* Lembre-se dos `Hooks`. Eles podem te ajudar em diversos aspectos. (diferencial)
+* Queremos acompanhar a evolução do seu desenvolvimento. Se possível, deixe o histórico de commits. (diferencial)
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Agora sim. Finalizamos por aqui.  
+Faça um fork desse projeto, e ao final, submit a PR and good look! :D  
+Quando tiver dúvidas, ou encontrar algum problema, abra uma issue. Estaremos de olho.  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Beijos e queijos <3
 
-## Learn More
+[https://www.alphavantage.co/documentation/#symbolsearch]: https://www.alphavantage.co/documentation/#symbolsearch
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+[https://www.alphavantage.co/documentation/#daily]: https://www.alphavantage.co/documentation/#daily
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[https://www.alphavantage.co/support/#api-key]: https://www.alphavantage.co/support/#api-key
 
-### Code Splitting
+[https://material-ui.com/]: https://material-ui.com/
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+[https://www.alphavantage.co/documentation/]: https://www.alphavantage.co/documentation/
 
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[https://github.com/HIAE/react-test/tree/master/specs]: https://github.com/HIAE/react-test/tree/master/specs
