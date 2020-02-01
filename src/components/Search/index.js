@@ -1,32 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { lightBlue } from '@material-ui/core/colors';
 
-const CompaniesAndSymbols = [
-  { title: 'The Shawshank Redemption', year: 1994 },
-  { title: 'The Godfather', year: 1972 },
-  { title: 'The Godfather: Part II', year: 1974 },
-  { title: 'The Dark Knight', year: 2008 },
-  { title: '12 Angry Men', year: 1957 },
-  { title: "Schindler's List", year: 1993 },
-  { title: 'Pulp Fiction', year: 1994 },
-  { title: 'The Lord of the Rings: The Return of the King', year: 2003 },
-  { title: 'The Good, the Bad and the Ugly', year: 1966 },
-  { title: 'Fight Club', year: 1999 },
-];
+import api from '../../services/api';
 
 export default function Search() {
+  const [symbols, setSymbols] = useState([]);
+  const [symbol, setSymbol] = useState([]);
+
+  function handleAdd() {
+    setSymbols([...symbols, { title: symbol }]);
+  }
+
+  useEffect(() => {
+    async function getSymbol() {
+      const response = await api.get(
+        `query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=${process.env.API_KEY}`
+      );
+      setSymbols([response.data.bestMatches]);
+      console.log(response.data.bestMatches);
+    }
+    getSymbol();
+  }, [symbol]);
+
   return (
-    <Autocomplete
-      id="combo-box-companies-and-symbols"
-      options={CompaniesAndSymbols}
-      getOptionLabel={option => option.title}
-      style={{ width: 300 }}
-      color={lightBlue[500]}
-      renderInput={params => (
-        <TextField {...params} variant="outlined" fullWidth />
-      )}
-    />
+    <>
+      <Autocomplete
+        id="combo-box-companies-and-symbols"
+        options={symbols}
+        freeSolo
+        style={{ width: 300 }}
+        color={lightBlue[500]}
+        onChange={handleAdd}
+        renderInput={params => (
+          <TextField
+            {...params}
+            variant="outlined"
+            fullWidth
+            vaule={symbol}
+            onChange={e => setSymbol(e.target.value)}
+          />
+        )}
+      />
+    </>
   );
 }
