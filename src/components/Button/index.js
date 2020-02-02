@@ -13,7 +13,7 @@ function ButtonComponent({ text }) {
 }
 
 Button.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
 };
 
 export default ButtonComponent;
