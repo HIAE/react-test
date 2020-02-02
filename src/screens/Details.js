@@ -27,6 +27,7 @@ function Details(props) {
     useEffect(() => {
         const makeGetDaily = async() => {
             const response = await getDaily(symbol)
+            console.log(response)
             setDaily(response)
             setIsLoading(false)
         }
@@ -47,7 +48,7 @@ function Details(props) {
                 {!isLoading &&
                     daily != null &&
                         <>  
-                            <Grid xs={12} sm={10} item>
+                            <Grid xs={12} item>
                                 <h1>
                                     {daily["Meta Data"]["2. Symbol"]}
                                 </h1>
@@ -57,7 +58,7 @@ function Details(props) {
                                 </p>
                                 <BackBtn />
                             </Grid>
-                            <Grid xs={12} sm={11} item>
+                            <Grid xs={12} item>
                                 <Chart daily={daily["Time Series (Daily)"]} />
                             </Grid>
                         </>}

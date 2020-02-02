@@ -16,8 +16,9 @@ import {
 
 import Items from './Items'
 
-function AutoComplete() {
+function AutoComplete(props) {
 
+    const { onError } = props
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [autoCompleteValue, setAutoCompleteValue] = useState('')
@@ -26,7 +27,11 @@ function AutoComplete() {
         const makeGetItems = async () => {
             setIsLoading(true)
             const response = await getSymbolsAutoComplete(autoCompleteValue)
-            setItems(response.bestMatches)
+            if(response.Note) {
+                onError(response.Note)
+            } else {
+                setItems(response.bestMatches)
+            }
             setIsLoading(false)
         }
 

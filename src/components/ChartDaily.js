@@ -127,7 +127,7 @@ function ChartDaily(props) {
                 <AreaChart
                     data={renderDaily}
                     margin={{
-                        top: 10, bottom: 10,
+                        top: 15, bottom: 10, left: -30
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />

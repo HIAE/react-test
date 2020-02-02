@@ -2,7 +2,8 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
     inputDate: {
-        marginLeft: 40
+        marginRight: 40,
+        marginBottom: 15
     }
 })
 
