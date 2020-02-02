@@ -16,6 +16,8 @@ import {
 
 import Chart from '../components/ChartDaily'
 
+import BackBtn from '../components/BackButton'
+
 function Details(props) {
 
     const { match: { params: { symbol } } } = props
@@ -53,6 +55,7 @@ function Details(props) {
                                     <b>Last Refreshed: </b>
                                     {daily["Meta Data"]["3. Last Refreshed"].replace(/-/g, '/')}
                                 </p>
+                                <BackBtn />
                             </Grid>
                             <Grid xs={12} sm={11} item>
                                 <Chart daily={daily["Time Series (Daily)"]} />

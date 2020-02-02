@@ -5,7 +5,7 @@ import {
     Item
 } from '../../assets/styles/autocomplete'
 
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom"
 
 function Items(props) {
 
