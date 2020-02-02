@@ -36,21 +36,21 @@ export default function Details(props) {
         <>
           <p>{`${companyDailyPrices.MetaData.Symbol}`}</p>
           <p>{`${companyDailyPrices.MetaData.TimeZone}`}</p>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="flex-start"
+            flexDirection="column"
+            height="90vh"
+          >
+            <NavLink to="/">
+              <Button variant="contained" color="primary" text="Back" />
+            </NavLink>
+            <Description text="Hello world, hello america." />
+            <Chart prices={companyDailyPrices['TimeSeries(Daily)']} />
+          </Box>
         </>
       )}
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="flex-start"
-        flexDirection="column"
-        height="90vh"
-      >
-        <NavLink to="/">
-          <Button variant="contained" color="primary" text="Back" />
-        </NavLink>
-        <Description text="Hello world, hello america." />
-        <Chart />
-      </Box>
     </Container>
   );
 }
