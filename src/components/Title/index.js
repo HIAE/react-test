@@ -1,6 +1,6 @@
 import React from 'react';
-import './Title.style.css';
+import TitleComponent from './Title.styled';
 
 export default function Title({ text }) {
-  return <h1>{text}</h1>;
+  return <TitleComponent>{text}</TitleComponent>;
 }
