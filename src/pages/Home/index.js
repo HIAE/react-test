@@ -14,7 +14,7 @@ export default function Home() {
         flexDirection="column"
         height="90vh"
       >
-        <Title text="Search a companie by symbol" />
+        <Title text="Search a company" />
         <Search />
       </Box>
     </Container>
