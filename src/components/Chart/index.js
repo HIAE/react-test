@@ -2,21 +2,18 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Legend } from 'recharts';
 import { lightBlue } from '@material-ui/core/colors';
 
-const chartData = [
-  { name: 'Day 1', close: 4000 },
-  { name: 'Day 2', close: 3000 },
-  { name: 'Day 3', close: 2000 },
-  { name: 'Day 4', close: 2780 },
-  { name: 'Day 5', close: 1890 },
-  { name: 'Day 6', close: 2390 },
-  { name: 'Day 7', close: 3490 },
-];
+export default function Chart({ prices }) {
+  console.log(prices);
 
-export default function Chart() {
+  const teste = Object.keys(prices).map(key => ({
+    date: key,
+    close: prices[key].close,
+  }));
+
   return (
-    <BarChart width={900} height={400} data={chartData}>
-      <XAxis dataKey="name" />
-      <YAxis type="number" domain={[0, 'dataMax']} />
+    <BarChart width={900} height={400} data={teste}>
+      <XAxis />
+      <YAxis type="number" domain={[0]} />
       <Legend />
       <Bar
         dataKey="close"
