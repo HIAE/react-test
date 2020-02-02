@@ -1,45 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { lightBlue } from '@material-ui/core/colors';
+import { ajustKeys } from '../../utils/ObjectBuilder';
 
 import api from '../../services/api';
 
 export default function Search() {
-  const [symbols, setSymbols] = useState([]);
-  const [symbol, setSymbol] = useState([]);
+  const [company, setNewCompany] = useState('');
+  const [companies, setCompanies] = useState([]);
 
-  function handleAdd() {
-    setSymbols([...symbols, { title: symbol }]);
-  }
+  const handleSubmit = useCallback(
+    async e => {
+      e.preventDefault();
 
-  useEffect(() => {
-    async function getSymbol() {
-      const response = await api.get(
-        `query?function=SYMBOL_SEARCH&keywords=${symbol}&apikey=${process.env.API_KEY}`
+      const { data } = await api.get(
+        `query?function=SYMBOL_SEARCH&keywords=${company}&apikey=${process.env.API_KEY}`
       );
-      setSymbols([response.data.bestMatches]);
-      console.log(response.data.bestMatches);
-    }
-    getSymbol();
-  }, [symbol]);
+
+      setNewCompany('');
+      setCompanies(ajustKeys(data.bestMatches));
+    },
+    [company]
+  );
 
   return (
     <>
       <Autocomplete
         id="combo-box-companies-and-symbols"
-        options={symbols}
+        options={companies}
         freeSolo
         style={{ width: 300 }}
         color={lightBlue[500]}
-        onChange={handleAdd}
+        onBlur={handleSubmit}
         renderInput={params => (
           <TextField
             {...params}
             variant="outlined"
             fullWidth
-            vaule={symbol}
-            onChange={e => setSymbol(e.target.value)}
+            onChange={e => setNewCompany(e.target.value)}
           />
         )}
       />
