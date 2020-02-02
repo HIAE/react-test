@@ -4,11 +4,11 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 
 import {
     WrapperBackBtn
-} from '../assets/styles/backbutton'
+} from '../assets/styles/backpagebtn'
 
 import { useHistory } from "react-router-dom"
 
-function BackButton() {
+function BackPageBtn() {
 
     const history = useHistory()
 
@@ -20,4 +20,4 @@ function BackButton() {
     )
 }
 
-export default BackButton
+export default BackPageBtn

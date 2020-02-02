@@ -16,7 +16,7 @@ import {
 
 import Chart from '../components/ChartDaily'
 
-import BackBtn from '../components/BackButton'
+import BackBtn from '../components/BackPageBtn'
 
 function Details(props) {
 
@@ -42,7 +42,7 @@ function Details(props) {
                 container
             >
                 {isLoading && 
-                    <CircularProgress size='6rem' color={'primary'} />}
+                    <CircularProgress size='5rem' color={'primary'} />}
 
                 {!isLoading &&
                     daily != null &&
