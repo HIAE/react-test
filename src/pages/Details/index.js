@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { ajustKeys } from '../../utils/ObjectBuilder';
 
 import Button from '../../components/Button';
@@ -11,7 +12,7 @@ import Chart from '../../components/Chart';
 import api from '../../services/api';
 
 export default function Details(props) {
-  const [loading, setLoading] = useState(1);
+  const [isLoading, setIsLoading] = useState(1);
   const [companyDailyPrices, setCompanyDailyPrices] = useState([]);
 
   const { match } = props;
@@ -20,7 +21,7 @@ export default function Details(props) {
       `query?function=TIME_SERIES_DAILY&symbol=${match.params.symbol}&apikey=${process.env.API_KEY}`
     );
     setCompanyDailyPrices(ajustKeys(data));
-    setLoading(0);
+    setIsLoading(0);
   };
 
   useEffect(() => {
@@ -29,8 +30,8 @@ export default function Details(props) {
 
   return (
     <Container maxWidth="md">
-      {loading ? (
-        <p>Loading coroi</p>
+      {isLoading ? (
+        <CircularProgress disableShrink />
       ) : (
         <>
           <p>{`${companyDailyPrices.MetaData.Symbol}`}</p>
