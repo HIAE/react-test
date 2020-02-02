@@ -26,13 +26,21 @@ function AutoComplete(props) {
     useEffect(() => {
         const makeGetItems = async () => {
             setIsLoading(true)
-            const response = await getSymbolsAutoComplete(autoCompleteValue)
-            if(response.Note) {
-                onError(response.Note)
-            } else {
-                setItems(response.bestMatches)
+            try {
+                const response = await getSymbolsAutoComplete(autoCompleteValue)
+
+                if(response.Note) {
+                    onError(response.Note)
+                    setIsLoading(false)
+                } else {
+                    setItems(response.bestMatches)
+                    setIsLoading(false)
+                }
+            } catch (error) {
+                onError('Something unexpected happened, try again later!')
+                setIsLoading(false)
+                console.error(error)
             }
-            setIsLoading(false)
         }
 
         if (autoCompleteValue !== '') {
@@ -40,7 +48,7 @@ function AutoComplete(props) {
         } else {
             setItems([])
         }
-    }, [autoCompleteValue])
+    }, [autoCompleteValue, onError])
 
     return (
         <ContainerAutoComplete>

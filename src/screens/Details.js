@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 import {
     Container,
@@ -18,22 +18,66 @@ import Chart from '../components/ChartDaily'
 
 import BackBtn from '../components/BackPageBtn'
 
+import { useHistory } from "react-router-dom"
+
+import ModalMessage from '../components/ModalMessage'
+
 function Details(props) {
 
     const { match: { params: { symbol } } } = props
     const [isLoading, setIsLoading] = useState(true)
     const [daily, setDaily] = useState(null)
+    const [modalInfo, setModalInfo] = useState({
+        open: false,
+    })
+    const history = useHistory()
+    const isFirstRun = useRef(true)
 
     useEffect(() => {
         const makeGetDaily = async() => {
-            const response = await getDaily(symbol)
-            console.log(response)
-            setDaily(response)
-            setIsLoading(false)
+
+            try {
+                const response = await getDaily(symbol)
+
+                if (response.Note || response["Error Message"]) {
+                    makeSetModalInfo(response.Note || response["Error Message"])
+                    setIsLoading(false)
+                } else {
+                    setDaily(response)
+                    setIsLoading(false)
+                }
+            } catch (error) {
+                makeSetModalInfo('Something unexpected happened, try again later!')
+                setIsLoading(false)
+                console.error(error)
+            }
+        }
+
+        const makeSetModalInfo = msg => {
+            setModalInfo({
+                modal: {
+                  title: 'Ops...',
+                  description: msg,
+                  txtBtn: 'Ok!'
+                }
+            })
         }
 
         makeGetDaily()
     }, [symbol])
+
+    useEffect(() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false;
+            return
+        } else if(!modalInfo.open) {
+            setModalInfo({
+                ...modalInfo,
+                open: true,
+                handleClose: () => history.push('/'),
+            })
+        }
+    }, [modalInfo, history])
 
     return(
         <Container>
@@ -63,6 +107,12 @@ function Details(props) {
                             </Grid>
                         </>}
             </GridContainerDetails>
+            {modalInfo.open && 
+                <ModalMessage 
+                open={modalInfo.open}
+                handleClose={modalInfo.handleClose}
+                modal={modalInfo.modal}
+                />}
         </Container>
     )
 }
