@@ -6,7 +6,7 @@ const GET_SYMBOLS_AUTOCOMPLETE = symbol => {
 }
 
 const GET_DAILY = symbol => {
-    return `${BASE_URL}/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${API_KEY}`
+    return `${BASE_URL}/query?function=TIME_SERIES_DAILY&symbol=${symbol}&outputsize=full&apikey=${API_KEY}`
 }
 
 export {

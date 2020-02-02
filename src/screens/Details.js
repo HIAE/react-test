@@ -54,7 +54,7 @@ function Details(props) {
                                     {daily["Meta Data"]["3. Last Refreshed"].replace(/-/g, '/')}
                                 </p>
                             </Grid>
-                            <Grid xs={12} sm={10} item>
+                            <Grid xs={12} sm={11} item>
                                 <Chart daily={daily["Time Series (Daily)"]} />
                             </Grid>
                         </>}
