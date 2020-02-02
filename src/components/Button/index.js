@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
+import ButtonComponent from './Button.styled';
 
-function ButtonComponent({ text }) {
+function Button({ text }) {
   return (
     <>
-      <Button variant="contained" color="primary" type="button">
-        {text}
-      </Button>
+      <ButtonComponent>{text}</ButtonComponent>
     </>
   );
 }
@@ -16,4 +14,4 @@ Button.propTypes = {
   text: PropTypes.string,
 };
 
-export default ButtonComponent;
+export default Button;
