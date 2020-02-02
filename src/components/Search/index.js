@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from 'react';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import { lightBlue } from '@material-ui/core/colors';
 import { ajustKeys } from '../../utils/ObjectBuilder';
+
+import CompanyList from '../List';
 
 import api from '../../services/api';
 
@@ -26,22 +25,14 @@ export default function Search() {
 
   return (
     <>
-      <Autocomplete
-        id="combo-box-companies-and-symbols"
-        options={companies}
-        freeSolo
-        style={{ width: 300 }}
-        color={lightBlue[500]}
+      <input
+        data-testid="form-input"
+        type="text"
+        onChange={e => setNewCompany(e.target.value)}
+        placeholder="Search by name"
         onBlur={handleSubmit}
-        renderInput={params => (
-          <TextField
-            {...params}
-            variant="outlined"
-            fullWidth
-            onChange={e => setNewCompany(e.target.value)}
-          />
-        )}
       />
+      {companies && <CompanyList list={companies} />}
     </>
   );
 }
