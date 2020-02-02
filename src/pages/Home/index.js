@@ -2,6 +2,7 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Search from '../../components/Search';
+import Title from '../../components/Title';
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
         flexDirection="column"
         height="90vh"
       >
-        <h1>Hello Home</h1>
+        <Title text="Search a companie by symbol" />
         <Search />
       </Box>
     </Container>
