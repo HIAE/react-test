@@ -6,6 +6,8 @@ import CompanyList from '../List';
 
 import api from '../../services/api';
 
+import SearchComponent from './Search.styled';
+
 export default function Search() {
   const [company, setNewCompany] = useState('');
   const [companies, setCompanies] = useState([]);
@@ -26,10 +28,8 @@ export default function Search() {
 
   return (
     <>
-      <Input
+      <SearchComponent
         placeholder="Search by name or symbol"
-        inputProps={{ 'aria-label': 'description' }}
-        data-testid="form-input"
         type="text"
         onChange={e => setNewCompany(e.target.value)}
         onBlur={handleSubmit}
