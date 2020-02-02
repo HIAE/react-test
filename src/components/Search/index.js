@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import Input from '@material-ui/core/Input';
 import { ajustKeys } from '../../utils/ObjectBuilder';
 
 import CompanyList from '../List';
@@ -25,11 +26,12 @@ export default function Search() {
 
   return (
     <>
-      <input
+      <Input
+        placeholder="Search by name or symbol"
+        inputProps={{ 'aria-label': 'description' }}
         data-testid="form-input"
         type="text"
         onChange={e => setNewCompany(e.target.value)}
-        placeholder="Search by name"
         onBlur={handleSubmit}
       />
       {companies && <CompanyList list={companies} />}
