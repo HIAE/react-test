@@ -21,7 +21,6 @@ const getSymbolsAutoComplete = symbol => {
 
 const getDaily = symbol => {
     return new Promise ((resolve, reject)=> {
-        console.log(GET_DAILY(symbol))
         axios.get(GET_DAILY(symbol))
         .then((response) => {
             console.log(response.data)

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import {
     Container,
-    Box,
     CircularProgress,
     Grid
 } from '@material-ui/core'
@@ -14,6 +13,8 @@ import {
 import {
     getDaily
 } from '../services/requests'
+
+import Chart from '../components/ChartDaily'
 
 function Details(props) {
 
@@ -43,14 +44,20 @@ function Details(props) {
 
                 {!isLoading &&
                     daily != null &&
-                        <Grid 
-                            xs={12}
-                            item
-                        >
-                            <h1>
-                                {symbol}
-                            </h1>
-                        </Grid>}
+                        <>  
+                            <Grid xs={12} sm={10} item>
+                                <h1>
+                                    {daily["Meta Data"]["2. Symbol"]}
+                                </h1>
+                                <p>
+                                    <b>Last Refreshed: </b>
+                                    {daily["Meta Data"]["3. Last Refreshed"].replace(/-/g, '/')}
+                                </p>
+                            </Grid>
+                            <Grid xs={12} sm={10} item>
+                                <Chart daily={daily["Time Series (Daily)"]} />
+                            </Grid>
+                        </>}
             </GridContainerDetails>
         </Container>
     )

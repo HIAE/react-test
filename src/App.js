@@ -19,8 +19,7 @@ function App() {
         >
           <Grid 
             item
-            xs={12}
-            lg={10}
+            xs={10}
           >
             <AutoComplete/>
           </Grid>
