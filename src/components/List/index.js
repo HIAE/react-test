@@ -10,7 +10,7 @@ export default function CompanyList({ list }) {
       <ul>
         {list.map(item => (
           <li key={item.symbol}>
-            <Link to={{ pathname: `/:${item.symbol}/details` }}>
+            <Link to={{ pathname: `/${item.symbol}/details` }}>
               <Box display="flex" justifyContent="flex-start">
                 <p>{item.symbol}</p>
                 <p>{item.name}</p>
