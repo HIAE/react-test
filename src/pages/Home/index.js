@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <Container maxWidth="md">
       <Box
-        fixed
         display="flex"
         justifyContent="center"
         alignItems="center"
