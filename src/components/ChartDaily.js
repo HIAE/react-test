@@ -26,7 +26,7 @@ function ChartDaily(props) {
 
     useEffect(() => {
         let newRenderDaily = Object.entries(daily)
-        newRenderDaily = newRenderDaily.map(e => {
+        newRenderDaily = newRenderDaily.reverse().map(e => {
             return {
                 open: e[1]["1. open"],
                 high: e[1]["2. high"],
@@ -42,7 +42,9 @@ function ChartDaily(props) {
     return(
         <>
             <Grid justify="space-between" container>
-                <div></div>
+                <div>
+
+                </div>
                 <div>
                     <InputLabel htmlFor="daily-native-helper"></InputLabel>
                     <NativeSelect
