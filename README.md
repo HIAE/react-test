@@ -13,6 +13,8 @@ E também gostaria de falar que adicionei uma feature nova ao projeto! Vocês po
 
 Gostaria de falar que a pasta tests infelizmente está vazia, porém a minha vontade de aprender a automatizar os testes unitários não está cabendo em mim hahah. Creio que será a próxima coisa que vou me esforçar para aprender.
 
+Outro coisa é que hospedei o projeto no Heroku, bem não sei explicar por que fiz isso. Só senti vontade de fazer e fiz: [Aqui está] (http://react-test-hiae.herokuapp.com). Está sincronizado na branch de development.
+
 E também, negativo ou positivo, gostaria de ter um feedback para saber onde posso melhorar e etc.
 
 Bem, é somente isso mesmo. Queria agradecer a oportunidade que me deram, espero que eu tenha feito valer.
