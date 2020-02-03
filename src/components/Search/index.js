@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from 'react';
-import Input from '@material-ui/core/Input';
 import { ajustKeys } from '../../utils/ObjectBuilder';
 
 import CompanyList from '../List';
