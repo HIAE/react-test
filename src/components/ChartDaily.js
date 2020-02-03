@@ -77,13 +77,13 @@ function ChartDaily(props) {
     return(
         <>
             <Grid justify="space-between" alignItems="center" container>
-                <Grid xs={12} sm={7} item>
+                <Grid sm={12} md={8} item>
                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                         <KeyboardDatePicker
                             disableToolbar
                             variant="inline"
                             format="MM/dd/yyyy"
-                            label="Initial date"
+                            label="From Date"
                             className={classes.inputDate}
                             value={initialDate}
                             onChange={value => setInitialDate(value)}
@@ -95,7 +95,7 @@ function ChartDaily(props) {
                             disableToolbar
                             variant="inline"
                             format="MM/dd/yyyy"
-                            label="End date"
+                            label="To Date"
                             className={classes.inputDate}
                             value={endDate}
                             onChange={value => setEndDate(value)}
@@ -105,29 +105,31 @@ function ChartDaily(props) {
                         />
                     </MuiPickersUtilsProvider>
                 </Grid>
-                <FormControl variant="outlined">
-                    <InputLabel htmlFor="daily-native-helper"></InputLabel>
-                    <Select
-                        fullWidth
-                        value={dataKeyValueChart}
-                        onChange={e => setDataKeyValueChart(e.target.value)}
-                        inputProps={{
-                            name: 'daily',
-                            id: 'daily-native-helper',
-                        }}
-                    >
-                        <MenuItem value={'close'}>close</MenuItem>
-                        <MenuItem value={'open'}>open</MenuItem>
-                        <MenuItem value={'high'}>high</MenuItem>
-                        <MenuItem value={'low'}>low</MenuItem>
-                    </Select>
-                </FormControl>
+                <Grid item xs={12} md={1}>
+                    <FormControl variant="outlined" className={classes.inputDate}>
+                        <InputLabel htmlFor="daily-native-helper"></InputLabel>
+                        <Select
+                            autoWidth={true}
+                            value={dataKeyValueChart}
+                            onChange={e => setDataKeyValueChart(e.target.value)}
+                            inputProps={{
+                                name: 'daily',
+                                id: 'daily-native-helper',
+                            }}
+                        >
+                            <MenuItem value={'close'}>close</MenuItem>
+                            <MenuItem value={'open'}>open</MenuItem>
+                            <MenuItem value={'high'}>high</MenuItem>
+                            <MenuItem value={'low'}>low</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Grid>
             </Grid>
             <ResponsiveContainer width={'100%'} aspect={1.0/0.3}>
                 <AreaChart
                     data={renderDaily}
                     margin={{
-                        top: 15, bottom: 10, left: -30
+                        top: 15, bottom: 10, left: -25
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />

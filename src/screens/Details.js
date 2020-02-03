@@ -34,6 +34,7 @@ function Details(props) {
     const isFirstRun = useRef(true)
 
     useEffect(() => {
+        document.title = `${symbol} - Details`
         const makeGetDaily = async() => {
 
             try {

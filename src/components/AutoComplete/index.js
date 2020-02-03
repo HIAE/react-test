@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { 
     TextField,
@@ -20,24 +20,31 @@ function AutoComplete(props) {
 
     const { onError } = props
     const [items, setItems] = useState([])
+    const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [autoCompleteValue, setAutoCompleteValue] = useState('')
+    const isFirstRun = useRef(true)
 
     useEffect(() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false;
+            return
+        }
+        
         const makeGetItems = async () => {
             setIsLoading(true)
             try {
                 const response = await getSymbolsAutoComplete(autoCompleteValue)
 
                 if(response.Note) {
-                    onError(response.Note)
+                    setError(response.Note)
                     setIsLoading(false)
                 } else {
                     setItems(response.bestMatches)
                     setIsLoading(false)
                 }
             } catch (error) {
-                onError('Something unexpected happened, try again later!')
+                setError('Something unexpected happened, try again later!')
                 setIsLoading(false)
                 console.error(error)
             }
@@ -48,17 +55,28 @@ function AutoComplete(props) {
         } else {
             setItems([])
         }
-    }, [autoCompleteValue, onError])
+    }, [autoCompleteValue])
+
+    useEffect(() => {
+        if (isFirstRun.current) {
+            isFirstRun.current = false;
+            return
+        } else if(error) {
+            onError(error, () => {
+                setError(null)
+            })
+        }
+    }, [error, onError])
 
     return (
         <ContainerAutoComplete>
             <TextField
                 id="symbol-autocomplete-input"
-                label="Symbol"
+                label="Symbol or name"
                 autoComplete="false"
                 type="text"
                 variant="outlined"
-                placeholder="Type a symbol..."
+                placeholder="Type a symbol or name..."
                 onChange={(e) => setAutoCompleteValue(e.target.value)}
                 InputProps={{
                     endAdornment: <InputAdornment position="end">
