@@ -39,8 +39,8 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Container className={classes.bgContainer}>
+    <div className={`App ${classes.bgContainer}`}>
+      <Container>
         <Grid 
           alignItems="center"
           justify="center"
