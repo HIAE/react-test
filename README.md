@@ -18,5 +18,3 @@ Outro coisa é que hospedei o projeto no Heroku, bem não sei explicar por que f
 E também, negativo ou positivo, gostaria de ter um feedback para saber onde posso melhorar e etc.
 
 Bem, é somente isso mesmo. Queria agradecer a oportunidade que me deram, espero que eu tenha feito valer.
-
-Tchau!
