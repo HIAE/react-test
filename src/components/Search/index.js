@@ -31,7 +31,7 @@ export default function Search() {
         placeholder="Search by name or symbol"
         type="text"
         onChange={e => setNewCompany(e.target.value)}
-        onBlur={handleSubmit}
+        onBlur={company && handleSubmit}
       />
       {companies && <CompanyList list={companies} />}
     </>
