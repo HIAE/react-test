@@ -43,16 +43,18 @@ Informações de ações para cada símbolo: [Daily][https://www.alphavantage.co
 
 Ufa... agora, respira, e não pira!
 
-#### Desafios Extras
+#### Desafios Extras - se vc quiser fazer um pouquinho mais
 * Crie containers para centralizar sua lógica, e componentes de apresentação reutilizáveis.
 * Nós não possuímos um layout definido, apenas um [wireframe][https://github.com/HIAE/react-test/tree/master/specs]. Mas capriche na apresentação (nós utilizamos o [Material UI][https://material-ui.com/])
 * Não se esqueça dos amiguinhos do mobile. Será que conseguimos tornar nossa applicação responsiva?
 * Como desenvolvedor front-end, vc não pode, em hipoteze alguma, esquecer da semântica. Uma `<div>` não pode ficar dentro de um `<p>`;
 * Animação à la [Bloomberg](https://www.bloomberg.com): exibir em formato de marquee o valor e variação percentual de ações gerais
 
-#### Mais dicas...
-* Lembre-se dos `Hooks`. Eles podem te ajudar em diversos aspectos. (diferencial)
-* Queremos acompanhar a evolução do seu desenvolvimento. Se possível, deixe o histórico de commits. (diferencial)
+#### Diferenciais - se vc quiser SUPERAR as expectativas
+* Utilize o Redux para controle de estado.
+* Vc pode utilizar o Reselect para seleções específicas no estado.
+* Lembre-se dos `Hooks`. Eles podem te ajudar em diversos aspectos.
+* Queremos acompanhar a evolução do seu desenvolvimento. Se possível, deixe o histórico de commits.
 
 Agora sim. Finalizamos por aqui.  
 Faça um fork desse projeto, e ao final, submit a PR and good luck! :D  
