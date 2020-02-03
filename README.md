@@ -1,73 +1,20 @@
 Esse projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app). (Vamos adiantar algumas coisas por aqui hehe!)
 
-## hiae-react-test
-Seja muito bem vindo.  
-Sim, mas é claro! Se vc chegou até aqui, considere-se importante para nós.  
+## Minhas consideraçôes sobre o projeto
 
-Esse teste foi desenvolvido especialmente para vc. E sabemos que vc tem as skills necessárias para finalizá-lo.  
-Ok... se ainda estiver perdido, dá uma olhada na descrição da vaga:
+Olá, que bom que vai ler isto <3.
+Queria explicar um pouco sobre o que pensei em cada parte do teste, e como busquei realizar. 
 
-[[São Paulo] Front-end/React Developer no Hospital Israelita Albert Eistein][https://github.com/react-brasil/vagas/issues/562]
+Bem, a primeira coisa que eu gostaria de dizer é que realmente o Material-Ui é melhor que o react-boostrap, creio que foi o Bruno (se não me engano) que me falou que o react-bootstrap era ruim, e agora entendo ele. Material Ui realmente é bem melhor de se trabalhar. Agradeço :D
 
-[https://github.com/react-brasil/vagas/issues/562]: https://github.com/react-brasil/vagas/issues/562
+Segundo tópico, na pasta de styles voces vão ver códigos usando o styled-components e também usando o modulo styles do Material-Ui. Creio que o melhor em um projeto é usar somente um tipo de estilização, porém fiz isso para mostrar que sei utilizar o styled-components, porém também sei aprender e usar coisas novas, e estou sempre aberto a aprender coisas novas!
 
-Cerimônias a parte, vamos ao que interessa!  
-Esse teste tem como objetivo a criação de uma aplicação para exibir valores de ações, através de chamadas em uma API.  
-Teremos 2 telas para tal:
-* Home
-    * Mostre um campo autocomplete (Olha a dica haha) que lista os símbolos/nome de empresas. (Ex: FB, listará Facebook e mais algumas empresas, etc...)
-* Details
-    * Aqui mostraremos os detalhes do símbolo que vc selecionou na tela anterior, alem de campos para filtros por data: de/para
+E também gostaria de falar que adicionei uma feature nova ao projeto! Vocês podem agora selecionar o tipo de dado que querem ver entre close, high, open e low. Sei que estavam somente interessados no close, porém como eu tinha um bom tempo para realizar (abri mão do rolê para me esforçar aqui haha) e achei uma boa feature, pensei "por que não?".
 
-#### API  
-Nós vamos utilizar a API do [Alpha Advantage][https://www.alphavantage.co/documentation/].  
+Gostaria de falar que a pasta tests infelizmente está vazia, porém a minha vontade de aprender a automatizar os testes unitários não está cabendo em mim hahah. Creio que será a próxima coisa que vou me esforçar para aprender.
 
-Busca de Símbolos: [Search Endpoint][https://www.alphavantage.co/documentation/#symbolsearch]  
-Informações de ações para cada símbolo: [Daily][https://www.alphavantage.co/documentation/#daily] (estamos interessados apenas no `close`)
-> Vc deve enviar o `apikey` em todas as requisições. Acesse [aqui][https://www.alphavantage.co/support/#api-key] e solicite uma `apikey`. It's freeeee!
+E também, negativo ou positivo, gostaria de ter um feedback para saber onde posso melhorar e etc.
 
+Bem, é somente isso mesmo. Queria agradecer a oportunidade que me deram, espero que eu tenha feito valer.
 
-#### Desafio 1
-* Utilize o endpoint `Search Endpoint` para buscar os items na API e preencher o campo de autocomplete.  
-* Além disso, ao selecionar um item do autocomplete, precisamos mover o usuário para a página de detalhes: `:symbol/details`.  
-> dica: vc pode utilizar o axios como client para requisições. Mas se estiver familiarizado com outro client, fique a vontade.
-
-#### Desafio 2
-* Faça uma requisição para o endpoint `Daily` e guarde os dados retornados no estado, para futuras filtragens.  
-* Monte um gráfico com a evolução do valor das ações.
-> dica: utilize o recharts para montagem do gráfico.
-
-#### Desafio 3
-* Nossa aplicação não possui testes. É interessante que possamos garantir o funcionamento de cada componente e integração.  
-* Garanta também que seus componentes não sejam re-renderizados (a menos que necessário).  
-
-Ufa... agora, respira, e não pira!
-
-#### Desafios Extras
-* Crie containers para centralizar sua lógica, e componentes de apresentação reutilizáveis.
-* Nós não possuímos um layout definido, apenas um [wireframe][https://github.com/HIAE/react-test/tree/master/specs]. Mas capriche na apresentação (nós utilizamos o [Material UI][https://material-ui.com/])
-* Não se esqueça dos amiguinhos do mobile. Será que conseguimos tornar nossa applicação responsiva?
-* Como desenvolvedor front-end, vc não pode, em hipoteze alguma, esquecer da semântica. Uma `<div>` não pode ficar dentro de um `<p>`;
-* Animação à la [Bloomberg](https://www.bloomberg.com): exibir em formato de marquee o valor e variação percentual de ações gerais
-
-#### Mais dicas...
-* Lembre-se dos `Hooks`. Eles podem te ajudar em diversos aspectos. (diferencial)
-* Queremos acompanhar a evolução do seu desenvolvimento. Se possível, deixe o histórico de commits. (diferencial)
-
-Agora sim. Finalizamos por aqui.  
-Faça um fork desse projeto, e ao final, submit a PR and good luck! :D  
-Quando tiver dúvidas, ou encontrar algum problema, abra uma issue. Estaremos de olho.  
-
-Beijos e queijos <3
-
-[https://www.alphavantage.co/documentation/#symbolsearch]: https://www.alphavantage.co/documentation/#symbolsearch
-
-[https://www.alphavantage.co/documentation/#daily]: https://www.alphavantage.co/documentation/#daily
-
-[https://www.alphavantage.co/support/#api-key]: https://www.alphavantage.co/support/#api-key
-
-[https://material-ui.com/]: https://material-ui.com/
-
-[https://www.alphavantage.co/documentation/]: https://www.alphavantage.co/documentation/
-
-[https://github.com/HIAE/react-test/tree/master/specs]: https://github.com/HIAE/react-test/tree/master/specs
+Tchau!
