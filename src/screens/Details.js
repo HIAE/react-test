@@ -110,9 +110,9 @@ function Details(props) {
             </GridContainerDetails>
             {modalInfo.open && 
                 <ModalMessage 
-                open={modalInfo.open}
-                handleClose={modalInfo.handleClose}
-                modal={modalInfo.modal}
+                    open={modalInfo.open}
+                    handleClose={modalInfo.handleClose}
+                    modal={modalInfo.modal}
                 />}
         </Container>
     )

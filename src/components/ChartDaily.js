@@ -34,8 +34,16 @@ function ChartDaily(props) {
     const [dataKeyValueChart, setDataKeyValueChart] = useState('close')
     const [initialDate, setInitialDate] = useState(null)
     const [endDate, setEndDate] = useState(null)
+    const [aspectChart, setAspectChart] = useState(3)
     const [daily, setDaily] = useState([])
     const isFirstRun = useRef(true)
+
+    useEffect(() => {
+        if(window.innerWidth <= 920) {
+            console.log(window.innerWidth)
+            setAspectChart(1.2)
+        }
+    }, [])
 
     useEffect(() => {
         let newDaily = Object.entries(props.daily)
@@ -125,11 +133,11 @@ function ChartDaily(props) {
                     </FormControl>
                 </Grid>
             </Grid>
-            <ResponsiveContainer width={'100%'} aspect={1.0/0.3}>
+            <ResponsiveContainer width={'100%'} aspect={aspectChart}>
                 <AreaChart
                     data={renderDaily}
                     margin={{
-                        top: 15, bottom: 10, left: -25
+                        top: 15, bottom: 10, left: -16
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
