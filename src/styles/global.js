@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { color } from '../shared/variables';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
@@ -14,7 +15,7 @@ export default createGlobalStyle`
     height: 100%;
   }
   body{
-    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    background-color: ${color.outer_space};
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased !important;
   }

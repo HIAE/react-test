@@ -1,10 +1,10 @@
 export const color = {
-  '--catskill-white': '#FDFEFE',
-  '--iron': '#D0D3D7',
-  '--silver-sand': '#B8BBBF',
-  '--laser': '#CDB272',
-  '--zorba': '#9E9A8A',
-  '--outer-space': '#282F37',
+  catskill_white: '#FDFEFE',
+  iron: '#D0D3D7',
+  silver_sand: '#B8BBBF',
+  laser: '#CDB272',
+  zorba: '#9E9A8A',
+  outer_space: '#282F37',
 };
 
 export const fontSize = {
