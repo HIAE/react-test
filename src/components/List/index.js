@@ -2,21 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Box from '@material-ui/core/Box';
-import { ListComponent, ListItem, ListItemText } from './List.styled';
+import ListItemText from '@material-ui/core/ListItemText';
+
+// import Box from '@material-ui/core/Box';
+import { ListComponent, ListItemComponent } from './List.styled';
 
 export default function CompanyList({ list }) {
   return (
     <>
       <ListComponent>
-        {list.map(item => (
-          <Link to={{ pathname: `/${item.symbol}/details` }}>
-            <Box display="flex" justifyContent="flex-start">
-              <ListItem>
-                <ListItemText>{item.symbol}</ListItemText>
-                <ListItemText>{item.name}</ListItemText>
-              </ListItem>
-            </Box>
+        {list.map(company => (
+          <Link to={{ pathname: `/${company.symbol}/details` }}>
+            <ListItemComponent>
+              <ListItemText primary={company.name} />
+            </ListItemComponent>
           </Link>
         ))}
       </ListComponent>
