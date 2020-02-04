@@ -1,3 +1,12 @@
+export const color = {
+  '--catskill-white': '#FDFEFE',
+  '--iron': '#D0D3D7',
+  '--silver-sand': '#B8BBBF',
+  '--laser': '#CDB272',
+  '--zorba': '#9E9A8A',
+  '--outer-space': '#282F37',
+};
+
 export const fontSize = {
   'u-fontSize-8': '0.5em',
   'u-fontSize-12': '0.75em',
