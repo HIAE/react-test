@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
   Legend,
@@ -15,6 +15,7 @@ export default function Chart({ prices }) {
 
   const informations = Object.keys(prices).map(key => ({
     date: key,
+    open: prices[key].open,
     close: prices[key].close,
   }));
 
@@ -26,13 +27,14 @@ export default function Chart({ prices }) {
   console.log(dataByDate);
 
   return (
-    <BarChart width={900} height={400} data={dataByDate}>
-      <CartesianGrid strokeDasharray="3 3" />
+    <LineChart width={900} height={400} data={dataByDate}>
+      <CartesianGrid strokeDasharray="1" />
       <XAxis dataKey="date" />
-      <YAxis datakey="close" />
+      <YAxis datakey="close" domain={[dataByDate.open, dataByDate.close]} />
       <Tooltip />
       <Legend />
-      <Bar dataKey="close" fill="#8884d8" />
-    </BarChart>
+      <Line dataKey="open" fill="peru" />
+      <Line dataKey="close" fill="#8884d8" />
+    </LineChart>
   );
 }
