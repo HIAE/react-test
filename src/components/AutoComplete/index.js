@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 
 import { 
     TextField,
@@ -58,7 +58,7 @@ function AutoComplete() {
             isFirstRun.current = false;
             return
         }
-        
+
         const makeGetItems = async () => {
             setIsLoading(true)
             try {
@@ -85,6 +85,16 @@ function AutoComplete() {
         }
     }, [autoCompleteValue, sendError])
 
+    const useItems = useMemo(() => {
+        return items.length > 0 && 
+            <Items items={items} />
+    }, [items])
+
+    const useLoading = useMemo(() => {
+        return isLoading && 
+            <CircularProgress size='2rem' color={'primary'} /> 
+    }, [isLoading])
+
 
     return (
         <ContainerAutoComplete>
@@ -98,13 +108,12 @@ function AutoComplete() {
                 onChange={(e) => setAutoCompleteValue(e.target.value)}
                 InputProps={{
                     endAdornment: <InputAdornment position="end">
-                        { isLoading && <CircularProgress size='2rem' color={'primary'} /> }
+                        {useLoading}
                     </InputAdornment>
                 }}
                 fullWidth
             />
-            {items.length > 0 && 
-                <Items items={items} />}
+            {useItems}
         </ContainerAutoComplete>
     )
 }
