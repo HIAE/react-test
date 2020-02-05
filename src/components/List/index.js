@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import ListItemText from '@material-ui/core/ListItemText';
 
-// import Box from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box';
 import { ListComponent, ListItemComponent } from './List.styled';
 
 export default function CompanyList({ list }) {
@@ -14,7 +14,10 @@ export default function CompanyList({ list }) {
         {list.map(company => (
           <Link to={{ pathname: `/${company.symbol}/details` }}>
             <ListItemComponent>
-              <ListItemText primary={company.name} />
+              <Box display="flex" justifyContent="flex-start">
+                <ListItemText primary={company.symbol} />
+                <ListItemText primary={company.name} />
+              </Box>
             </ListItemComponent>
           </Link>
         ))}
