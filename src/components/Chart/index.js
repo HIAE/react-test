@@ -1,5 +1,13 @@
 import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, Legend } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Legend,
+  CartesianGrid,
+  Tooltip,
+} from 'recharts';
 
 export default function Chart({ prices }) {
   const informations = Object.keys(prices).map(key => ({
@@ -9,14 +17,12 @@ export default function Chart({ prices }) {
 
   return (
     <BarChart width={900} height={400} data={informations}>
-      <XAxis />
-      <YAxis type="number" domain={[0]} />
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="date" />
+      <YAxis datakey="close" />
+      <Tooltip />
       <Legend />
-      <Bar
-        dataKey="close"
-        fill="#01579b"
-        label={{ fill: '#e1f5fe', fontSize: 12 }}
-      />
+      <Bar dataKey="close" fill="#8884d8" />
     </BarChart>
   );
 }
