@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 
 import { 
     TextField,
@@ -16,14 +16,42 @@ import {
 
 import Items from './Items'
 
-function AutoComplete(props) {
+import { 
+    useDispatch 
+} from 'react-redux'
 
-    const { onError } = props
+import {
+    SET_MODAL
+} from '../../redux/actions/actionTypes'
+
+function AutoComplete() {
+
+    const dispatch = useDispatch()
     const [items, setItems] = useState([])
-    const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
     const [autoCompleteValue, setAutoCompleteValue] = useState('')
     const isFirstRun = useRef(true)
+
+
+    const sendError = useCallback(message => {
+        dispatch({ 
+            type: SET_MODAL,
+            modal: {
+              open: true,
+              handleClose: () => {
+                dispatch({
+                  type: SET_MODAL,
+                  modal: {
+                    open: false
+                  }
+                })
+              },
+              title: 'Ops...',
+              description: message,
+              txtBtn: 'Ok!'
+            }
+        })
+    }, [dispatch])
 
     useEffect(() => {
         if (isFirstRun.current) {
@@ -37,14 +65,14 @@ function AutoComplete(props) {
                 const response = await getSymbolsAutoComplete(autoCompleteValue)
 
                 if(response.Note) {
-                    setError(response.Note)
+                    sendError(response.Note)
                     setIsLoading(false)
                 } else {
                     setItems(response.bestMatches)
                     setIsLoading(false)
                 }
             } catch (error) {
-                setError('Something unexpected happened, try again later!')
+                sendError('Something unexpected happened, try again later!')
                 setIsLoading(false)
                 console.error(error)
             }
@@ -55,18 +83,8 @@ function AutoComplete(props) {
         } else {
             setItems([])
         }
-    }, [autoCompleteValue])
+    }, [autoCompleteValue, sendError])
 
-    useEffect(() => {
-        if (isFirstRun.current) {
-            isFirstRun.current = false;
-            return
-        } else if(error) {
-            onError(error, () => {
-                setError(null)
-            })
-        }
-    }, [error, onError])
 
     return (
         <ContainerAutoComplete>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import AutoComplete from './components/AutoComplete/'
 
@@ -14,29 +14,10 @@ import useStyles from './assets/styles/app'
 function App() {
 
   const classes = useStyles()
-  const [modalInfo, setModalInfo] = useState({
-    open: false,
-  })
 
   useEffect(() => {
     document.title = 'Welcome!'
   }, [])
-
-  const onError = (msg, callback) => {
-    if(!modalInfo.open)
-      setModalInfo({
-        handleClose: () => {
-          callback()
-          setModalInfo({open: false})
-        },
-        open: true,
-        modal: {
-          title: 'Ops...',
-          description: msg,
-          txtBtn: 'Ok!'
-        }
-      })
-  }
 
   return (
     <div className={`App ${classes.bgContainer}`}>
@@ -51,16 +32,11 @@ function App() {
             item
             xs={10}
           >
-            <AutoComplete onError={onError}/>
+            <AutoComplete />
           </Grid>
         </Grid>
       </Container>
-      {modalInfo.open && 
-        <ModalMessage 
-          open={modalInfo.open}
-          handleClose={modalInfo.handleClose}
-          modal={modalInfo.modal}
-        />}
+      <ModalMessage />
     </div>
   );
 }

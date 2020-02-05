@@ -10,32 +10,35 @@ import {
     Button
 } from '@material-ui/core'
 
+import { useSelector } from 'react-redux'
+
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />
 })
 
-function ModalMessage(props){
+function ModalMessage(){
 
-    const { open, handleClose, modal } = props
+    const modalConfig = useSelector(state => {
+        return state.modalState.modal
+    })
 
     return(
         <Dialog
-            open={open}
+            open={modalConfig.open}
             TransitionComponent={Transition}
-            keepMounted
-            onClose={handleClose}
+            onClose={modalConfig.handleClose}
             aria-labelledby="alert-dialog-slide-title"
             aria-describedby="alert-dialog-slide-description"
         >
-            <DialogTitle id="alert-dialog-slide-title">{modal.title}</DialogTitle>
+            <DialogTitle id="alert-dialog-slide-title">{modalConfig.title}</DialogTitle>
             <DialogContent>
                 <DialogContentText id="alert-dialog-slide-description">
-                    {modal.description}
+                    {modalConfig.description}
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                    {modal.txtBtn}
+                <Button onClick={modalConfig.handleClose} color="primary">
+                    {modalConfig.txtBtn}
                 </Button>
             </DialogActions>
         </Dialog>
