@@ -49,6 +49,6 @@ export const CompanyNameSymbol = styled.p`
 
 export const CompanyNameComponent = styled.p`
   font-size: 12px;
-  max-width: 140px;
+  max-width: 180px;
   text-align: right;
 `;
