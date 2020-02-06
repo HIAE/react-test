@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Legend,
-  // CartesianGrid,
-  Tooltip,
-} from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Legend, Tooltip } from 'recharts';
 
 export default function Chart({ prices }) {
   const initialDate = '2020-01-22';
@@ -23,18 +15,26 @@ export default function Chart({ prices }) {
     return item.date >= initialDate && item.date <= finalDate;
   });
 
-  console.log(informations);
-  console.log(dataByDate);
-
   return (
     <LineChart width={900} height={400} data={dataByDate}>
-      {/* <CartesianGrid strokeDasharray="1" /> */}
       <XAxis dataKey="date" />
       <YAxis datakey="close" domain={[dataByDate.open, dataByDate.close]} />
       <Tooltip />
       <Legend />
-      <Line dataKey="open" fill="red" strokeWidth={2} type="monotone" />
-      <Line dataKey="close" fill="#8884d8" strokeWidth={3} type="monotone" />
+      <Line
+        dataKey="open"
+        stroke="#006BA6"
+        fill="#006BA6"
+        strokeWidth={3}
+        type="monotone"
+      />
+      <Line
+        dataKey="close"
+        stroke="#0496FF"
+        fill="#0496FF"
+        strokeWidth={1}
+        type="monotone"
+      />
     </LineChart>
   );
 }
