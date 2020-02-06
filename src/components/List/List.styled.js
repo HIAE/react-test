@@ -4,7 +4,7 @@ import ListItem from '@material-ui/core/ListItem';
 import { color } from '../../shared/variables';
 
 export const ListComponent = styled(List)`
-  width: 400px;
+  width: 600px;
   padding: 0;
   background-color: ${color.silver_sand};
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
@@ -49,6 +49,6 @@ export const CompanyNameSymbol = styled.p`
 
 export const CompanyNameComponent = styled.p`
   font-size: 12px;
-  max-width: 180px;
+  max-width: 330px;
   text-align: right;
 `;
