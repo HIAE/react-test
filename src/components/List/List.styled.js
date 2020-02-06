@@ -9,7 +9,7 @@ export const ListComponent = styled(List)`
   background-color: ${color.silver_sand};
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
   border-radius: 4px;
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 190px;
 
   ::-webkit-scrollbar {
@@ -32,7 +32,7 @@ export const ListItemComponent = styled(ListItem)`
   margin: 8px auto;
   transition: 0.2s;
   width: 100%;
-  border-radius: 26px;
+  height: 40px;
   display: flex;
   justify-content: space-between;
 
