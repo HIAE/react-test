@@ -5,10 +5,23 @@ import { color } from '../../shared/variables';
 
 export const ListComponent = styled(List)`
   width: 400px;
-  background-color: ${color.silver_sand};
   padding: 0;
+  background-color: ${color.silver_sand};
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
   border-radius: 4px;
+  overflow-y: scroll;
+  height: 190px;
+
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: ${color.outer_space};
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const ListItemComponent = styled(ListItem)`
@@ -20,6 +33,8 @@ export const ListItemComponent = styled(ListItem)`
   transition: 0.2s;
   width: 100%;
   border-radius: 26px;
+  display: flex;
+  justify-content: space-between;
 
   &:hover {
     background-color: ${color.iron};
@@ -28,6 +43,12 @@ export const ListItemComponent = styled(ListItem)`
   }
 `;
 
-export const ListItemText = styled.span`
-  margin-right: 10px;
+export const CompanyNameSymbol = styled.p`
+  font-size: 16px;
+`;
+
+export const CompanyNameComponent = styled.p`
+  font-size: 12px;
+  max-width: 140px;
+  text-align: right;
 `;
