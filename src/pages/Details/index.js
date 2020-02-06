@@ -34,8 +34,6 @@ export default function Details(props) {
         <CircularProgress disableShrink />
       ) : (
         <>
-          <p>{`${companyDailyPrices.MetaData.Symbol}`}</p>
-          <p>{`${companyDailyPrices.MetaData.TimeZone}`}</p>
           <Box
             display="flex"
             justifyContent="center"
@@ -43,10 +41,13 @@ export default function Details(props) {
             flexDirection="column"
             height="90vh"
           >
+            <Description
+              symbol={companyDailyPrices.MetaData.Symbol}
+              locale={companyDailyPrices.MetaData.TimeZone}
+            />
             <NavLink to="/">
               <Button variant="contained" color="primary" text="Back" />
             </NavLink>
-            <Description text="Hello world, hello america." />
             <Chart prices={companyDailyPrices['TimeSeries(Daily)']} />
           </Box>
         </>

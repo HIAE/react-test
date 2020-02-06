@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { DescriptionComponent } from './Description.styled';
 
-function Description({ text }) {
-  return <p>{text}</p>;
+function Description({ symbol, locale }) {
+  return (
+    <DescriptionComponent>
+      <p>Here we have some information about the researched company.</p>
+      <p>Symbol: {symbol}</p>
+      <p>Location: {locale}</p>
+      <p>Below you can filter by date:</p>
+    </DescriptionComponent>
+  );
 }
 
 Description.propTypes = {
-  text: PropTypes.string.isRequired,
+  symbol: PropTypes.string.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default Description;
