@@ -30,17 +30,20 @@ export default function Details(props) {
 
   return (
     <Container maxWidth="md">
-      {isLoading ? (
-        <CircularProgress disableShrink />
-      ) : (
-        <>
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="flex-start"
-            flexDirection="column"
-            height="90vh"
-          >
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        height="90vh"
+      >
+        {isLoading ? (
+          <>
+            <p>Loading informations</p>
+            <CircularProgress disableShrink color="#0a2" size={40} />
+          </>
+        ) : (
+          <>
             <Description
               symbol={companyDailyPrices.MetaData.Symbol}
               locale={companyDailyPrices.MetaData.TimeZone}
@@ -49,9 +52,9 @@ export default function Details(props) {
               <Button variant="contained" color="primary" text="Back" />
             </NavLink>
             <Chart prices={companyDailyPrices['TimeSeries(Daily)']} />
-          </Box>
-        </>
-      )}
+          </>
+        )}
+      </Box>
     </Container>
   );
 }
