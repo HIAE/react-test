@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 
 import { 
     TextField,
@@ -30,7 +30,6 @@ function AutoComplete() {
     const [items, setItems] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [autoCompleteValue, setAutoCompleteValue] = useState('')
-    const isFirstRun = useRef(true)
 
 
     const sendError = useCallback(message => {
@@ -54,10 +53,6 @@ function AutoComplete() {
     }, [dispatch])
 
     useEffect(() => {
-        if (isFirstRun.current) {
-            isFirstRun.current = false;
-            return
-        }
 
         const makeGetItems = async () => {
             setIsLoading(true)
