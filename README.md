@@ -1,6 +1,6 @@
 Esse projeto foi iniciado com [Create React App](https://github.com/facebook/create-react-app). (Vamos adiantar algumas coisas por aqui hehe!)
 
-## Minhas consideraçôes sobre o projeto
+## Minhas considerações sobre o projeto
 
 Olá, que bom que vai ler isto <3.
 Queria explicar um pouco sobre o que pensei em cada parte do teste, e como busquei realizar. 
