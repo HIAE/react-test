@@ -7,7 +7,6 @@ export default function Chart({ prices }) {
 
   const informations = Object.keys(prices).map(key => ({
     date: key,
-    open: prices[key].open,
     close: prices[key].close,
   }));
 
@@ -22,17 +21,10 @@ export default function Chart({ prices }) {
       <Tooltip />
       <Legend />
       <Line
-        dataKey="open"
-        stroke="#006BA6"
-        fill="#006BA6"
-        strokeWidth={3}
-        type="monotone"
-      />
-      <Line
         dataKey="close"
         stroke="#0496FF"
         fill="#0496FF"
-        strokeWidth={1}
+        strokeWidth={3}
         type="monotone"
       />
     </LineChart>
