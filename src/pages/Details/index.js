@@ -8,18 +8,18 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import PropTypes from 'prop-types';
 import { ajustKeys } from '../../utils/ObjectBuilder';
-import Description from '../../components/Description';
 import Chart from '../../components/Chart';
 import Title from '../../components/Title';
 
 import api from '../../services/api';
+import Description from '../../components/Description';
 
 function Details(props) {
   const today = moment().format('YYYY-MM-DD');
   const initialState = moment(today)
     .subtract(7, 'days')
     .format('YYYY-MM-DD');
-  const [isLoading, setIsLoading] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
   const [companyDailyPrices, setCompanyDailyPrices] = useState([]);
   const [endDate, setEndDate] = useState(initialState);
 
@@ -33,17 +33,18 @@ function Details(props) {
 
   const { match } = props;
 
-  useEffect(() => {
-    async function getInformations() {
-      const { data } = await api.get(
-        `query?function=TIME_SERIES_DAILY&symbol=${match.params.symbol}&apikey=${process.env.API_KEY}`
-      );
-      setCompanyDailyPrices(ajustKeys(data));
-    }
-    getInformations();
-  }, [match]);
+  const fetchData = async () => {
+    const { data } = await api.get(
+      `query?function=TIME_SERIES_DAILY&symbol=${match.params.symbol}&apikey=${process.env.API_KEY}`
+    );
+    setCompanyDailyPrices(ajustKeys(data));
+    setIsLoading(0);
+  };
 
-  setIsLoading(0);
+  useEffect(() => {
+    fetchData();
+  }, [props]);
+
   return (
     <Container maxWidth="md">
       {isLoading ? (
