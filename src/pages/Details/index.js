@@ -16,17 +16,12 @@ import api from '../../services/api';
 
 export default function Details(props) {
   const today = moment().format('YYYY-MM-DD');
-  const [isLoading, setIsLoading] = useState(1);
-  const [companyDailyPrices, setCompanyDailyPrices] = useState([]);
-  const [endDate, setEndDate] = useState(
-    moment(today)
-      .subtract(7, 'days')
-      .format('YYYY-MM-DD')
-  );
-
-  const oneWeek = moment(today)
+  const initialState = moment(today)
     .subtract(7, 'days')
     .format('YYYY-MM-DD');
+  const [isLoading, setIsLoading] = useState(1);
+  const [companyDailyPrices, setCompanyDailyPrices] = useState([]);
+  const [endDate, setEndDate] = useState(initialState);
 
   const oneMonth = moment(today)
     .subtract(30, 'days')
@@ -74,7 +69,7 @@ export default function Details(props) {
             </NavLink>
 
             <ButtonGroup size="small" aria-label="small outlined button group">
-              <Button onClick={() => setEndDate(oneWeek)}>1 week</Button>
+              <Button onClick={() => setEndDate(initialState)}>1 week</Button>
               <Button onClick={() => setEndDate(oneMonth)}>1 month</Button>
               <Button onClick={() => setEndDate(threeMonth)}>3 months</Button>
             </ButtonGroup>
