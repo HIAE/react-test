@@ -19,7 +19,6 @@ export default function Search() {
         `query?function=SYMBOL_SEARCH&keywords=${company}&apikey=${process.env.API_KEY}`
       );
 
-      setNewCompany('');
       setCompanies(ajustKeys(data.bestMatches));
     },
     [company]
@@ -31,7 +30,7 @@ export default function Search() {
         placeholder="Search by name or symbol"
         type="text"
         onChange={e => setNewCompany(e.target.value)}
-        onBlur={company && handleSubmit}
+        onInput={company && handleSubmit}
       />
       {companies && <CompanyList list={companies} />}
     </>
