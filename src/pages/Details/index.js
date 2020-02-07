@@ -3,17 +3,38 @@ import { NavLink } from 'react-router-dom';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import moment from 'moment';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { ajustKeys } from '../../utils/ObjectBuilder';
 
-import Button from '../../components/Button';
+// import Button from '../../components/Button';
 import Description from '../../components/Description';
 import Chart from '../../components/Chart';
 
 import api from '../../services/api';
 
 export default function Details(props) {
+  const today = moment().format('YYYY-MM-DD');
   const [isLoading, setIsLoading] = useState(1);
   const [companyDailyPrices, setCompanyDailyPrices] = useState([]);
+  const [endDate, setEndDate] = useState(
+    moment(today)
+      .subtract(7, 'days')
+      .format('YYYY-MM-DD')
+  );
+
+  const oneWeek = moment(today)
+    .subtract(7, 'days')
+    .format('YYYY-MM-DD');
+
+  const oneMonth = moment(today)
+    .subtract(30, 'days')
+    .format('YYYY-MM-DD');
+
+  const threeMonth = moment(today)
+    .subtract(60, 'days')
+    .format('YYYY-MM-DD');
 
   const { match } = props;
   const fetchData = async () => {
@@ -49,9 +70,19 @@ export default function Details(props) {
               locale={companyDailyPrices.MetaData.TimeZone}
             />
             <NavLink to="/">
-              <Button variant="contained" color="primary" text="Back" />
+              <Button>Back</Button>
             </NavLink>
-            <Chart prices={companyDailyPrices['TimeSeries(Daily)']} />
+
+            <ButtonGroup size="small" aria-label="small outlined button group">
+              <Button onClick={() => setEndDate(oneWeek)}>1 week</Button>
+              <Button onClick={() => setEndDate(oneMonth)}>1 month</Button>
+              <Button onClick={() => setEndDate(threeMonth)}>3 months</Button>
+            </ButtonGroup>
+            <Chart
+              prices={companyDailyPrices['TimeSeries(Daily)']}
+              today={today}
+              endDate={endDate}
+            />
           </>
         )}
       </Box>

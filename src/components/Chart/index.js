@@ -1,9 +1,9 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Legend, Tooltip } from 'recharts';
 
-export default function Chart({ prices }) {
-  const initialDate = '2020-01-22';
-  const finalDate = '2020-02-04';
+export default function Chart({ prices, today, endDate }) {
+  const todayDate = today;
+  console.log(endDate, today);
 
   const informations = Object.keys(prices).map(key => ({
     date: key,
@@ -11,7 +11,7 @@ export default function Chart({ prices }) {
   }));
 
   const dataByDate = informations.filter(item => {
-    return item.date >= initialDate && item.date <= finalDate;
+    return item.date >= endDate && item.date <= todayDate;
   });
 
   return (
