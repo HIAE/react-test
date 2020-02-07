@@ -9,6 +9,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { ajustKeys } from '../../utils/ObjectBuilder';
 import Description from '../../components/Description';
 import Chart from '../../components/Chart';
+import Title from '../../components/Title';
 
 import api from '../../services/api';
 
@@ -53,7 +54,7 @@ export default function Details(props) {
             flexDirection="column"
             height="90vh"
           >
-            <p>Loading informations</p>
+            <Title text="Loading informations" />
             <CircularProgress disableShrink color="primary" size={40} />
           </Box>
         </>
