@@ -8,8 +8,9 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from 'recharts';
+import PropTypes from 'prop-types';
 
-export default function Chart({ prices, today, endDate }) {
+function Chart({ prices, today, endDate }) {
   const informations = Object.keys(prices).map(key => ({
     date: key,
     close: prices[key].close,
@@ -37,3 +38,11 @@ export default function Chart({ prices, today, endDate }) {
     </ResponsiveContainer>
   );
 }
+
+Chart.propTypes = {
+  prices: PropTypes.number.isRequired,
+  today: PropTypes.number.isRequired,
+  endDate: PropTypes.number.isRequired,
+};
+
+export default Chart;
