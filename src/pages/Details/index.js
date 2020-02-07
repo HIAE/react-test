@@ -63,10 +63,16 @@ export default function Details(props) {
               locale={companyDailyPrices.MetaData.TimeZone}
             />
             <NavLink to="/">
-              <Button>Back</Button>
+              <Button variant="contained" color="primary">
+                Back
+              </Button>
             </NavLink>
-
-            <ButtonGroup size="small" aria-label="small outlined button group">
+            <ButtonGroup
+              variant="contained"
+              color="primary"
+              aria-label="contained primary button group"
+              size="small"
+            >
               <Button onClick={() => setEndDate(initialState)}>1 week</Button>
               <Button onClick={() => setEndDate(oneMonth)}>1 month</Button>
               <Button onClick={() => setEndDate(threeMonth)}>3 months</Button>
