@@ -7,8 +7,6 @@ import moment from 'moment';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { ajustKeys } from '../../utils/ObjectBuilder';
-
-// import Button from '../../components/Button';
 import Description from '../../components/Description';
 import Chart from '../../components/Chart';
 
