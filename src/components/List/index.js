@@ -15,7 +15,10 @@ export default function CompanyList({ list }) {
       {list.length > 0 && (
         <ListComponent>
           {list.map(company => (
-            <Link to={{ pathname: `/${company.symbol}/details` }}>
+            <Link
+              key={company.symbol}
+              to={{ pathname: `/${company.symbol}/details` }}
+            >
               <ListItemComponent>
                 <CompanyNameSymbol>{company.symbol}</CompanyNameSymbol>
                 <CompanyNameComponent>{company.name}</CompanyNameComponent>
