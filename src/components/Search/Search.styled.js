@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const SearchComponent = styled.input`
-  width: 400px;
+  max-width: 400px;
+  width: 100%;
   height: 40px;
   border: none;
   padding: 8px 16px;
