@@ -44,47 +44,67 @@ export default function Details(props) {
 
   return (
     <Container maxWidth="md">
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        height="90vh"
-      >
-        {isLoading ? (
-          <>
+      {isLoading ? (
+        <>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            flexDirection="column"
+            height="90vh"
+          >
             <p>Loading informations</p>
-            <CircularProgress disableShrink color="#0a2" size={40} />
-          </>
-        ) : (
-          <>
+            <CircularProgress disableShrink size={40} />
+          </Box>
+        </>
+      ) : (
+        <>
+          <Box
+            display="flex"
+            justifyContent="center"
+            alignItems="start"
+            flexDirection="column"
+            height="90vh"
+          >
+            <Box mb={2}>
+              <NavLink to="/">
+                <Button variant="contained" color="primary" size="small">
+                  Back
+                </Button>
+              </NavLink>
+            </Box>
+
             <Description
               symbol={companyDailyPrices.MetaData.Symbol}
               locale={companyDailyPrices.MetaData.TimeZone}
             />
-            <NavLink to="/">
-              <Button variant="contained" color="primary">
-                Back
-              </Button>
-            </NavLink>
-            <ButtonGroup
-              variant="contained"
-              color="primary"
-              aria-label="contained primary button group"
-              size="small"
-            >
-              <Button onClick={() => setEndDate(initialState)}>1 week</Button>
-              <Button onClick={() => setEndDate(oneMonth)}>1 month</Button>
-              <Button onClick={() => setEndDate(threeMonth)}>3 months</Button>
-            </ButtonGroup>
+
+            <Box mb={2}>
+              <ButtonGroup
+                variant="contained"
+                color="primary"
+                aria-label="contained primary button group"
+                size="small"
+              >
+                <Button title="1 Week" onClick={() => setEndDate(initialState)}>
+                  1W
+                </Button>
+                <Button title="1 Month" onClick={() => setEndDate(oneMonth)}>
+                  1M
+                </Button>
+                <Button title="3 Months" onClick={() => setEndDate(threeMonth)}>
+                  3M
+                </Button>
+              </ButtonGroup>
+            </Box>
             <Chart
               prices={companyDailyPrices['TimeSeries(Daily)']}
               today={today}
               endDate={endDate}
             />
-          </>
-        )}
-      </Box>
+          </Box>
+        </>
+      )}
     </Container>
   );
 }
