@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { fontSize } from '../../shared/variables';
 
 const SearchComponent = styled.input`
   max-width: 400px;
@@ -9,7 +10,7 @@ const SearchComponent = styled.input`
   border-radius: 26px;
   transition: 0.2s;
   margin-bottom: 32px;
-  font-size: 18px;
+  font-size: ${fontSize['u-fontSize-18']};
 
   &:focus {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;

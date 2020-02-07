@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import { color } from '../../shared/variables';
+import { color, fontSize } from '../../shared/variables';
 
 export const ListComponent = styled(List)`
   padding: 0;
@@ -34,7 +34,6 @@ export const ListComponent = styled(List)`
 
 export const ListItemComponent = styled(ListItem)`
   color: ${color.outer_space};
-  font-family: 'Roboto', sans-serif;
   list-style: none;
   display: flex;
   margin: 8px auto;
@@ -52,11 +51,11 @@ export const ListItemComponent = styled(ListItem)`
 `;
 
 export const CompanyNameSymbol = styled.p`
-  font-size: 16px;
+  font-size: ${fontSize['u-fontSize-16']};
 `;
 
 export const CompanyNameComponent = styled.p`
-  font-size: 12px;
+  font-size: ${fontSize['u-fontSize-12']};
   max-width: 330px;
   text-align: right;
 `;

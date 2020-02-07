@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { color } from '../../shared/variables';
+import { color, fontSize } from '../../shared/variables';
 
 const TitleComponent = styled.h1`
-  font-size: 32px;
+  font-size: ${fontSize['u-fontSize-32']};
   margin-bottom: 30px;
   color: ${color.catskill_white};
 `;
