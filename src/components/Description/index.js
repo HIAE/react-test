@@ -8,7 +8,7 @@ function Description({ symbol, locale }) {
       <p>Here we have some information about the researched company.</p>
       <p>Symbol: {symbol}</p>
       <p>Location: {locale}</p>
-      <p>Below you can filter by date:</p>
+      <p>Below you can filter by a date range:</p>
     </DescriptionComponent>
   );
 }
