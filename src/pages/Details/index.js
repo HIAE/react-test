@@ -54,7 +54,7 @@ export default function Details(props) {
             height="90vh"
           >
             <p>Loading informations</p>
-            <CircularProgress disableShrink size={40} />
+            <CircularProgress disableShrink color="primary" size={40} />
           </Box>
         </>
       ) : (
@@ -66,7 +66,7 @@ export default function Details(props) {
             flexDirection="column"
             height="90vh"
           >
-            <Box mb={2}>
+            <Box mb={2} mt={2}>
               <NavLink to="/">
                 <Button variant="contained" color="primary" size="small">
                   Back
