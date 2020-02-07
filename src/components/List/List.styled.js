@@ -33,7 +33,7 @@ export const ListComponent = styled(List)`
 `;
 
 export const ListItemComponent = styled(ListItem)`
-  color: #000;
+  color: ${color.outer_space};
   font-family: 'Roboto', sans-serif;
   list-style: none;
   display: flex;
