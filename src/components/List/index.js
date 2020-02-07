@@ -32,9 +32,5 @@ export default function CompanyList({ list }) {
 }
 
 CompanyList.propTypes = {
-  list: PropTypes.arrayOf(PropTypes.object),
-};
-
-CompanyList.defaultProps = {
-  list: [],
+  list: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
