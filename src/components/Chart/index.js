@@ -19,8 +19,8 @@ export default function Chart({ prices, today, endDate }) {
       <Legend />
       <Line
         dataKey="close"
-        stroke="#0496FF"
-        fill="#0496FF"
+        stroke="#3f51b5"
+        fill="#fff"
         strokeWidth={3}
         type="monotone"
       />
