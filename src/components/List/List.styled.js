@@ -4,13 +4,14 @@ import ListItem from '@material-ui/core/ListItem';
 import { color } from '../../shared/variables';
 
 export const ListComponent = styled(List)`
-  width: 600px;
   padding: 0;
   background-color: ${color.silver_sand};
   box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
   border-radius: 4px;
+  max-width: 400px;
+  width: 100%;
+  height: 400px;
   overflow-y: auto;
-  height: 190px;
 
   ::-webkit-scrollbar {
     width: 12px;
@@ -21,6 +22,13 @@ export const ListComponent = styled(List)`
     border-radius: 10px;
     background: ${color.outer_space};
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  }
+
+  @media (min-width: 760px) {
+    max-width: 600px;
+    width: 100%;
+    overflow-y: auto;
+    height: 190px;
   }
 `;
 
