@@ -1,11 +1,19 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
+import store from './store'
+import GlobalStyle from 'styles/GlobalStyle'
+import Routes from 'routes'
 
 function App() {
   return (
-    <div className="App">
-      <p>Faça algo bem legal aqui :D</p>
-    </div>
+    <Provider store={store}>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </Provider>
   );
 }
 
