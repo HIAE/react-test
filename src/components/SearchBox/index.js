@@ -16,7 +16,7 @@ export default function SearchBox() {
   const dispatch = useDispatch();
   
   const [inputValue, setInputValue] = useState('');
-  const data = useSelector(state => state.stocks.data);
+  const data = useSelector(state => state.stocks.searchData);
 
   useEffect(() => {
     if (inputValue !== '') dispatch(getStocksDataRequest(inputValue));

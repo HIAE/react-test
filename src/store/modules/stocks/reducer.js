@@ -1,5 +1,5 @@
 const INITIAL_STATE = {
-  data: null,
+  searchData: null,
 }
 
 export default function(state = INITIAL_STATE, action) {
@@ -7,7 +7,7 @@ export default function(state = INITIAL_STATE, action) {
     case '@stocks/GET_DATA_SUCCESS':
       return {
         ...state,
-        data: action.searchResult,
+        searchData: action.searchResult,
       }
       case '@stocks/GET_DATA_FAILURE':
       return {
