@@ -1,5 +1,6 @@
 const INITIAL_STATE = {
   searchData: null,
+  stockDaily: null,
 }
 
 export default function(state = INITIAL_STATE, action) {
@@ -16,6 +17,7 @@ export default function(state = INITIAL_STATE, action) {
       case '@stocks/GET_DATA_DAILY_SUCCESS':
       return {
         ...state,
+        stockDaily: action.payload,
       }
       case '@stocks/GET_DATA_DAILY_FAILURE':
       return {

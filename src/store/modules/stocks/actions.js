@@ -23,12 +23,13 @@ export function getStockDailyRequest(symbol) {
   return {
     type: '@stocks/GET_DATA_DAILY_REQUEST',
     symbol,
-  }
+  } 
 }
 
-export function getStockDailySuccess() {
+export function getStockDailySuccess(payload) {
   return {
     type: '@stocks/GET_DATA_DAILY_SUCCESS',
+    payload,
   }
 }
 
