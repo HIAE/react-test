@@ -59,7 +59,7 @@ export default function Details({history}) {
     <Container>
     <Wrapper>
       <AiOutlineArrowLeft size={25} color={"000"}onClick={() => pageHistory.push('/')}></AiOutlineArrowLeft>
-      <Text type="Headline">Voltar</Text>
+      <Text type="Headline">Return</Text>
     </Wrapper>
     {item && 
       <Header>
