@@ -17,10 +17,10 @@ function* getStocksData({searchText}) {
       let newObj = {};
       Object.keys(data).map(item => { 
         Object.keys(data[item]).map(key => {
-          newObj[key.replace(/^\d.\s/g,'')] = data[item][key];
+          return newObj[key.replace(/^\d.\s/g,'')] = data[item][key];
         })
         newData.push(newObj);
-        newObj = {};
+        return newObj = {};
       })
     yield put(getStocksDataSuccess(newData))
   }  else {

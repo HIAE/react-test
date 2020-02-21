@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
+import InputComponent from 'components/Input'
+
 export const Container = styled.div`
   width: 500px;
+
+  @media (max-width: 783px) {
+    width: 250px;
+  }
 `;
 
-export const Input = styled.input.attrs({
+export const Input = styled(InputComponent).attrs({
   type: 'text',
   placeholder: 'Type to search for a company'
 })`
@@ -33,4 +39,11 @@ export const DisplayItem =  styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  &&:hover, && p:not(:hover) {
+    color: #000;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 `;

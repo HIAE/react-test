@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import {getStocksDataRequest} from 'store/modules/stocks/actions'
+import Text from 'components/Text'
 
 import { 
   Container,
@@ -20,27 +21,29 @@ export default function SearchBox() {
 
   useEffect(() => {
     if (inputValue !== '') dispatch(getStocksDataRequest(inputValue));
-  }, [inputValue])
+  }, [inputValue, dispatch])
   
   return (
     <Container>
-      <Input 
+      <Input
+        noMargin
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <DisplayBox>
-        {data && data.map(item =>
+      {data && inputValue !== '' && <DisplayBox>
+        {data.map(item =>
           <Link to={{
             pathname: `/${item.symbol}/details`,
             state: {selectedItem: item}
           }} key={item.symbol + item.name}>
             <DisplayItem>
-              <p>{item.symbol}</p>
-              <p>{item.name}</p>
+              <Text type="Content">{item.symbol}</Text>
+              <Text type="Content">{item.name}</Text>
             </DisplayItem>  
           </Link>
         )}
       </DisplayBox>
+      }
     </Container>
   );
 }
