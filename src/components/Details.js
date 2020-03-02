@@ -7,7 +7,7 @@ class Details extends Component {
   render() {
     return (
       <div className="content-wrapper">
-        Home
+        Details
       </div>
     );
   }
