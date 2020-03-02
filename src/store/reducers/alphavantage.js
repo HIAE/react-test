@@ -13,12 +13,13 @@ const INITIAL_STATE = {
   bestMatches: [],
   selectedSymbol: "",
   seriesDaily: [],
+  lastSeach: "",
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.LOAD_SYMBOLS:
-      return { ...state, bestMatches: action.payload };
+      return { ...state, bestMatches: action.payload, lastSeach: action.lastSeach };
     case Types.SELECT_SYMBOL:
       return { ...state, selectedSymbol: action.payload };
     case Types.LOAD_SERIES_DAILY:
@@ -41,7 +42,8 @@ export const actionCreators = {
       .then(res => {
         dispatch({
           type: Types.LOAD_SYMBOLS,
-          payload: res.data.bestMatches
+          payload: res.data.bestMatches,
+          lastSeach: keywords
         })
       }).catch(err => {
         console.error(`Erro ao carregar SYMBOLS: ${err}`);
@@ -57,7 +59,7 @@ export const actionCreators = {
     return dispatch => {
       api.get("/", { params: params })
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         dispatch({
           type: Types.LOAD_SERIES_DAILY,
           payload: res.data

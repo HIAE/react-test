@@ -13,14 +13,16 @@ const Home = (props) => {
   }, [] );
 
   const inputChange = (event, value) => {
-    console.log('changeValue', value);
-    if (value.length > 0) {
+    // console.log('changeValue', value, 'lastSeach', props.lastSeach);
+    // Não buscar novamente caso a string pesquisada estiver contida na anterior
+    if ( (value.length > 0 && props.lastSeach == '') || value.indexOf(props.lastSeach) < 0) {
+      // console.log('searching ...')
       props.loadSymbols(value);
     }
   };
 
   const inputSelect = (event, value) => {
-    console.log('selectValue', value);
+    // console.log('selectValue', value);
     props.selectSymbol(value);
     props.history.push('/details');
   };
