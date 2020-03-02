@@ -1,27 +1,28 @@
 import React, { useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-
+import { TextField } from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
 import { actionCreators } from '../store/reducers/alphavantage';
 
 const Home = (props) => {
 
   // componentDidMount
   useEffect( () => {
-    props.loadSymbols();
+    // props.loadSymbols('microsoft');
   }, [] );
 
   const inputChange = (event, value) => {
     console.log('changeValue', value);
-    // if (value.length > 0) {
-      // props.loadSymbols(value);
-    // }
+    if (value.length > 0) {
+      props.loadSymbols(value);
+    }
   };
 
   const inputSelect = (event, value) => {
     console.log('selectValue', value);
+    props.selectSymbol(value);
+    props.history.push('/details');
   };
 
   return props.bestMatches ? (

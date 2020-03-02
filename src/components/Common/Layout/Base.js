@@ -1,19 +1,13 @@
 import React from 'react';
-// import Header from './Header';
-// import Sidebar from './Sidebar';
-// import Offsidebar from './Offsidebar';
-// import Footer from './Footer';
+import { Container, CssBaseline } from '@material-ui/core';
 
 const Base = props => (
-  <div className="wrapper">
-    {/* <Header /> */}
-    {/* <Sidebar /> */}
-    {/* <Offsidebar /> */}
-    <section className="section-container">
+  <React.Fragment>
+  <CssBaseline />
+    <Container>
       { props.children }
-    </section>
-    {/* <Footer /> */}
-  </div>
+    </Container>
+  </React.Fragment>
 );
 
 export default Base;
