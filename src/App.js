@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <p>Faça algo bem legal aqui :D</p>
-    </div>
-  );
+// App Routes
+import Routes from './Routes';
+
+class App extends Component {
+  render() {
+    // TODO: usar process.env.NODE_ENV para resolver a basename
+    const basename = '/';
+
+    return (
+      <Fragment>
+        <BrowserRouter basename={basename}>
+          <Routes />        
+        </BrowserRouter>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
