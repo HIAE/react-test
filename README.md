@@ -7,9 +7,9 @@ Sim, mas é claro! Se vc chegou até aqui, considere-se importante para nós.
 Esse teste foi desenvolvido especialmente para vc. E sabemos que vc tem as skills necessárias para finalizá-lo.  
 Ok... se ainda estiver perdido, dá uma olhada na descrição da vaga:
 
-[[São Paulo] Front-end/React Developer no Hospital Israelita Albert Eistein][https://github.com/react-brasil/vagas/issues/562]
+[[São Paulo] Front-end/React Developer no Hospital Israelita Albert Eistein][https://github.com/frontendbr/vagas/issues/3823]
 
-[https://github.com/react-brasil/vagas/issues/562]: https://github.com/react-brasil/vagas/issues/562
+[https://github.com/frontendbr/vagas/issues/3823]: https://github.com/frontendbr/vagas/issues/3823
 
 Cerimônias a parte, vamos ao que interessa!  
 Esse teste tem como objetivo a criação de uma aplicação para exibir valores de ações, através de chamadas em uma API.  
