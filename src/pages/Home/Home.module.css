@@ -13,6 +13,7 @@
   overflow-y: scroll;
   max-width: 500px;
   margin: 0 auto;
+  width: 94%;
 }
 
 .result_item {
@@ -35,4 +36,8 @@
 .result_symbol {
   color: #247a86;
   font-weight: bold;
+}
+
+.result_name {
+  width: 232px;
 }

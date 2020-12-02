@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import TextField from '@material-ui/core/TextField';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import TextField from "@material-ui/core/TextField";
 
 // import styles
-import styles from './Home.module.css';
+import styles from "./Home.module.css";
 
 // import components
-import TradingView from '../../components/TradingView/TradingView';
+import TradingView from "../../components/TradingView/TradingView";
 
 // import services
-import stockSearch from '../../services/stockAPI';
+import stockSearch from "../../services/stockAPI";
 
 export default function FormPropsTextFields() {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -64,10 +65,14 @@ export default function FormPropsTextFields() {
       {searchData && searchData.length ? (
         <ul className={styles.results}>
           {searchData.map((item) => (
-            <li key={item['1. symbol']} className={styles.result_item}>
-              <span className={styles.result_symbol}>{item['1. symbol']}</span>
-              <span className={styles.result_name}>{item['2. name']}</span>
-            </li>
+            <Link
+              to={`${item["1. symbol"]}/details`}
+              key={item["1. symbol"]}
+              className={styles.result_item}
+            >
+              <span className={styles.result_symbol}>{item["1. symbol"]}</span>
+              <span className={styles.result_name}>{item["2. name"]}</span>
+            </Link>
           ))}
         </ul>
       ) : (

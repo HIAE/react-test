@@ -1,5 +1,5 @@
-@import './normalize.scss';
-@import './colors';
+@import "./normalize.scss";
+@import "./colors";
 
 * {
   box-sizing: border-box;
@@ -8,7 +8,7 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background: $background;
 }
 
@@ -21,7 +21,8 @@ h1,
 h2,
 h3,
 p,
-span {
+span,
+label {
   margin: 0;
   color: $gray;
 }
