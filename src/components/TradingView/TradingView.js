@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 // import styles
-import styles from './TradingView.module.css';
+import styles from "./TradingView.module.css";
 
 const TradingView = () => {
   return (

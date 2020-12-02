@@ -4,6 +4,11 @@ header {
   width: 94%;
 }
 
+.title {
+  text-align: center;
+  margin: 15px 0;
+}
+
 .link {
   text-decoration: none;
   display: flex;
@@ -23,7 +28,7 @@ svg {
 
 .filters {
   max-width: 800px;
-  margin: 20px auto;
+  margin: 40px auto;
   width: 94%;
   border-radius: 4px;
   overflow: scroll;
@@ -52,7 +57,7 @@ svg {
   margin: 0 auto;
   width: 94%;
   height: 350px;
-  background: orangered;
+  background: white;
   border-radius: 4px;
   overflow: scroll;
 }

@@ -7,6 +7,7 @@ import styles from "./Details.module.css";
 
 // import components
 import TradingView from "../../components/TradingView/TradingView";
+import LineChart from "../../components/LineChart/LineChart";
 
 const Details = () => {
   return (
@@ -17,6 +18,8 @@ const Details = () => {
           <FiChevronLeft size={18} />
           Voltar
         </Link>
+
+        <h1 className={styles.title}>Mais detailhes sobre IBM</h1>
       </header>
 
       <div className={styles.filters}>
@@ -30,7 +33,9 @@ const Details = () => {
           <input type="text" id="to" />
         </div>
       </div>
-      <div className={styles.chart}></div>
+      <div className={styles.chart}>
+        <LineChart />
+      </div>
     </>
   );
 };
