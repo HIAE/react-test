@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.input_field {
+  width: 300px;
+}
+
+.results {
+  height: 300px;
+  overflow-y: scroll;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.result_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  height: 60px;
+  background: white;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 200ms ease-in;
+}
+
+.result_item:hover {
+  transform: translateX(-5px);
+}
+
+.result_symbol {
+  color: #247a86;
+  font-weight: bold;
+}
