@@ -1,6 +1,6 @@
 import { SET_SEARCH_ITEM_NAME } from "./constants";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   name: "",
 };
 

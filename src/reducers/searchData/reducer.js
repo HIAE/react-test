@@ -1,6 +1,6 @@
 import { FETCH_STARTED, FETCH_SUCCESS, FETCH_ERROR } from "./constants";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   data: null,
   loading: false,
   error: false,
