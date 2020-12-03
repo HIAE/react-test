@@ -14,20 +14,22 @@ import stockSearch from "../../services/stockAPI";
 
 // import actions
 import { setSearchedItemName } from "../../reducers/searchedItem/actions";
+import {
+  setFetchStarted,
+  setFetchSuccess,
+  setFetchError,
+} from "../../reducers/searchData/actions";
 
 export default function FormPropsTextFields() {
   const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const handleInputChange = async (e) => {
     setSearchTerm(e.target.value);
-    console.log(searchTerm);
 
     // fetch data from api
-    setLoading(true);
     const { data } = await stockSearch.get(
       `query?function=SYMBOL_SEARCH&keywords=${searchTerm}&apikey=QT0CFISDES7BDZGN`
     );
@@ -36,11 +38,28 @@ export default function FormPropsTextFields() {
     const response = data.bestMatches;
 
     setSearchData(response);
-    setLoading(true);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const handleItemClick = (symbol) => async () => {
+    // // dispatch the action to save the name
+    dispatch(setSearchedItemName(symbol));
+
+    // dispatch the action to save the data related to the symbol
+    try {
+      dispatch(setFetchStarted());
+      const { data } = await stockSearch.get(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&outputsize=full&apikey=demo`
+      );
+
+      const response = data["Time Series (Daily)"];
+      return dispatch(setFetchSuccess(response));
+    } catch (error) {
+      return dispatch(setFetchError(error.message));
+    }
   };
 
   return (
@@ -75,7 +94,7 @@ export default function FormPropsTextFields() {
               to={`${item["1. symbol"]}/details`}
               key={item["1. symbol"]}
               className={styles.result_item}
-              onClick={() => dispatch(setSearchedItemName(item["1. symbol"]))}
+              onClick={handleItemClick(item["1. symbol"])}
             >
               <span className={styles.result_symbol}>{item["1. symbol"]}</span>
               <span className={styles.result_name}>{item["2. name"]}</span>

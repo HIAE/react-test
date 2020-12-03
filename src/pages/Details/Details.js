@@ -8,18 +8,20 @@ import styles from "./Details.module.css";
 
 // import components
 import TradingView from "../../components/TradingView/TradingView";
-import LineChart from "../../components/LineChart/LineChart";
+import Chart from "../../components/Chart/Chart";
 
 const Details = () => {
   const state = useSelector((state) => state);
 
   const {
     stockSymbol: { name },
+    results: { data },
   } = state;
 
   return (
     <>
       <TradingView />
+
       <header>
         <Link to="/" className={styles.link}>
           <FiChevronLeft size={18} />
@@ -41,7 +43,7 @@ const Details = () => {
         </div>
       </div>
       <div className={styles.chart}>
-        <LineChart />
+        <Chart data={data} />
       </div>
     </>
   );
