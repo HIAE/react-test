@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { FiChevronLeft } from "react-icons/fi";
 
 // import styles
@@ -10,6 +11,12 @@ import TradingView from "../../components/TradingView/TradingView";
 import LineChart from "../../components/LineChart/LineChart";
 
 const Details = () => {
+  const state = useSelector((state) => state);
+
+  const {
+    stockSymbol: { name },
+  } = state;
+
   return (
     <>
       <TradingView />
@@ -19,7 +26,7 @@ const Details = () => {
           Voltar
         </Link>
 
-        <h1 className={styles.title}>Mais detailhes sobre IBM</h1>
+        <h1 className={styles.title}>Mais detailhes sobre {name}</h1>
       </header>
 
       <div className={styles.filters}>

@@ -1,8 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './styles/global.scss'
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-const DOM_NODE = document.getElementById('root');
+// import global styles
+import "./styles/global.scss";
 
-ReactDOM.render(<App />, DOM_NODE);
+// import store
+import { store } from "./services/store";
+
+import App from "./App";
+
+const DOM_NODE = document.getElementById("root");
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  DOM_NODE
+);

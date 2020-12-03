@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 
 // import styles
@@ -11,7 +12,12 @@ import TradingView from "../../components/TradingView/TradingView";
 // import services
 import stockSearch from "../../services/stockAPI";
 
+// import actions
+import { setSearchedItemName } from "../../reducers/searchedItem/actions";
+
 export default function FormPropsTextFields() {
+  const dispatch = useDispatch();
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -69,6 +75,7 @@ export default function FormPropsTextFields() {
               to={`${item["1. symbol"]}/details`}
               key={item["1. symbol"]}
               className={styles.result_item}
+              onClick={() => dispatch(setSearchedItemName(item["1. symbol"]))}
             >
               <span className={styles.result_symbol}>{item["1. symbol"]}</span>
               <span className={styles.result_name}>{item["2. name"]}</span>
