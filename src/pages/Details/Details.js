@@ -34,12 +34,12 @@ const Details = () => {
       <div className={styles.filters}>
         <div className={styles.input_group}>
           <label htmlFor="from">De</label>
-          <input type="text" id="from" />
+          <input type="text" id="from" disabled />
         </div>
 
         <div className={styles.input_group}>
           <label htmlFor="to">Até</label>
-          <input type="text" id="to" />
+          <input type="text" id="to" disabled />
         </div>
       </div>
       <div className={styles.chart}>
