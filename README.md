@@ -5,13 +5,8 @@ Seja muito bem vindo.
 Sim, mas é claro! Se vc chegou até aqui, considere-se importante para nós.  
 
 Esse teste foi desenvolvido especialmente para vc. E sabemos que vc tem as skills necessárias para finalizá-lo.  
-Ok... se ainda estiver perdido, dá uma olhada na descrição da vaga:
 
-[[São Paulo] Front-end/React Developer no Hospital Israelita Albert Eistein][https://github.com/frontendbr/vagas/issues/3823]
-
-[https://github.com/frontendbr/vagas/issues/3823]: https://github.com/frontendbr/vagas/issues/3823
-
-Cerimônias a parte, vamos ao que interessa!  
+Okay... cerimônias a parte, vamos ao que interessa!  
 Esse teste tem como objetivo a criação de uma aplicação para exibir valores de ações, através de chamadas em uma API.  
 Teremos 2 telas para tal:
 * Home
@@ -45,19 +40,21 @@ Ufa... agora, respira, e não pira!
 
 #### Desafios Extras - se vc quiser fazer um pouquinho mais
 * Crie containers para centralizar sua lógica, e componentes de apresentação reutilizáveis.
-* Nós não possuímos um layout definido, apenas um [wireframe][https://github.com/HIAE/react-test/tree/master/specs]. Mas capriche na apresentação (nós utilizamos o [Material UI][https://material-ui.com/])
+* Nós não possuímos um layout definido, apenas um [wireframe][https://github.com/HIAE/react-test/tree/master/specs]. Mas capriche na apresentação (nós utilizamos o [Material UI][https://material-ui.com/] como DS)
 * Não se esqueça dos amiguinhos do mobile. Será que conseguimos tornar nossa applicação responsiva?
 * Como desenvolvedor front-end, vc não pode, em hipoteze alguma, esquecer da semântica. Uma `<div>` não pode ficar dentro de um `<p>`;
-* Animação à la [Bloomberg](https://www.bloomberg.com): exibir em formato de marquee o valor e variação percentual de ações gerais
+* Animação marquee. Crie um componente para exibir o valor e variação percentual de ações gerais, no topo da página;
+> dica: veja um exemplo no site do [Bloomberg](https://www.bloomberg.com) no topo da página.
 
 #### Diferenciais - se vc quiser SUPERAR as expectativas
 * Utilize o Redux para controle de estado.
 * Vc pode utilizar o Reselect para seleções específicas no estado.
 * Lembre-se dos `Hooks`. Eles podem te ajudar em diversos aspectos.
-* Queremos acompanhar a evolução do seu desenvolvimento. Se possível, deixe o histórico de commits.
+* Queremos acompanhar a evolução do seu desenvolvimento então, não economize nos commits ;)
 
 Agora sim. Finalizamos por aqui.  
-Faça um fork desse projeto, e ao final, submit a PR and good luck! :D  
+Faça um fork desse projeto, e ao final envie-nos uma PR :D  
+Não se esqueça: faça algo que se orgulhe, algo incrível!  
 Quando tiver dúvidas, ou encontrar algum problema, abra uma issue. Estaremos de olho.  
 
 Beijos e queijos <3
