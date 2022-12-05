@@ -1,5 +1,13 @@
 import type { AppProps } from 'next/app'
+import { ThemeProvider } from 'styled-components'
+import { GlobalStyle } from '../styles/pages/global'
+import { defaultTheme } from '../styles/theme/default'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  )
 }
