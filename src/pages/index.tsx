@@ -1,21 +1,40 @@
 import { Button, TextField } from "@mui/material"
 import { GetServerSideProps } from "next"
-import { SelectSearchAsync, SymbolSearchOptions } from "../components/SelectSearchAsync"
+import Link from "next/link"
+import { useRouter } from "next/router"
+import { SelectSearchAsync } from "../components/SelectSearchAsync"
+import { SymbolSearchOptions, useAlphaVantage } from "../context/AlphaVantageContext"
 import { alphavantageApi } from "../services/api"
 import { AlphaVantageGetSearchData } from "../services/types"
-import { CardContainer, ContentContainer, HomeContainer, InputContainer } from "../styles/pages/home"
+import {
+  CardContainer,
+  ContentContainer,
+  HomeContainer,
+  InputContainer
+} from "../styles/pages/home"
 
 interface HomeProps {
   initialOptions: SymbolSearchOptions[]
 }
 
 export default function Home({ initialOptions }: HomeProps) {
+  const { push } = useRouter()
+  const { currentSymbolSelected } = useAlphaVantage()
+
+  const handleSearchOnClick = () => {
+    if (!currentSymbolSelected?.symbol) return console.warn('aaaaaaa')
+    push(`/details/${currentSymbolSelected.symbol}/${currentSymbolSelected.name}`)
+  }
+
   return (
     <HomeContainer>
       <ContentContainer>
         <InputContainer>
           <SelectSearchAsync initialOptions={initialOptions} />
-          <Button variant="outlined">Pesquisar</Button>
+
+          <Button variant="outlined" onClick={handleSearchOnClick}>
+            Pesquisar
+          </Button>
         </InputContainer>
 
         <CardContainer>

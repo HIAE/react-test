@@ -9,8 +9,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { keywords } = req.query
     if (!keywords) return res.status(400).json({ error: 'Bad Request.' })
 
-    const { data } = await alphavantageApi.get<AlphaVantageGetSearchData>(`query?function=SYMBOL_SEARCH&keywords=${keywords}&apikey=${process.env.ALPHAVANTAGE_SECRET_KEY}`)
-    const formatData = data.bestMatches.map(match => ({ name: match["2. name"], symbol: match["1. symbol"] }))
+    const { data } = await alphavantageApi
+      .get<AlphaVantageGetSearchData>(
+        `query?function=SYMBOL_SEARCH&keywords=${keywords}&apikey=${process.env.ALPHAVANTAGE_SECRET_KEY}`
+      )
+
+    const formatData = data.bestMatches.map(match =>
+      ({ name: match["2. name"], symbol: match["1. symbol"] })
+    )
 
     return res.status(201).json(formatData)
   } catch (err) {
