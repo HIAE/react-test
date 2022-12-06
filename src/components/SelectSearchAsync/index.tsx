@@ -1,5 +1,7 @@
 import { Autocomplete, Box, CircularProgress, FilterOptionsState, TextField } from "@mui/material"
-import { useEffect, useState } from "react"
+import axios from "axios"
+import { SyntheticEvent, useEffect, useState } from "react"
+import { NameText, OptionsContainer, SymbolText } from "./style"
 
 export interface SymbolSearchOptions {
   name: string
@@ -10,48 +12,35 @@ interface SelectSearchAsyncProps {
   initialOptions: SymbolSearchOptions[]
 }
 
-function sleep(delay = 0) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
-}
-
 export const SelectSearchAsync = ({ initialOptions }: SelectSearchAsyncProps) => {
   const [open, setOpen] = useState(false);
-  const [options, setOptions] = useState<readonly SymbolSearchOptions[]>(initialOptions);
+  const [options, setOptions] = useState<SymbolSearchOptions[]>(initialOptions);
   const loading = open && options.length === 0;
 
-  useEffect(() => {
-    let active = true;
-
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      await sleep();
-
-      if (active) {
-        setOptions([...initialOptions]);
-      }
-    })();
-
-    return () => {
-      active = false;
-    };
-  }, [loading]);
-
-  console.log(options)
-
-  const filterOptions = (option: SymbolSearchOptions[], state: FilterOptionsState<SymbolSearchOptions>) => {
+  function filterOptions(option: SymbolSearchOptions[], state: FilterOptionsState<SymbolSearchOptions>) {
     const { inputValue } = state
     return option.filter(item => item.name.toUpperCase().includes(inputValue.toUpperCase()))
+  }
+
+  async function fetchOptionData(event: SyntheticEvent<Element, Event>, inputvalue: string) {
+    if (!inputvalue) return
+
+    const { data } = await axios.get(`/api/search`, {
+      params: {
+        keywords: inputvalue,
+      }
+    })
+
+    setOptions(state => {
+      const mergedArray = [...state, ...data]
+      return mergedArray.filter((element, post, self) => self.indexOf(element) == post)
+    })
   }
 
   return (
     <Autocomplete
       id="search"
-      sx={{ width: 300 }}
+      sx={{ width: '100%' }}
       open={open}
       onOpen={() => {
         setOpen(true);
@@ -62,20 +51,21 @@ export const SelectSearchAsync = ({ initialOptions }: SelectSearchAsyncProps) =>
       filterOptions={filterOptions}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
+      onInputChange={fetchOptionData}
       options={options}
-      loading={loading}
       renderOption={
         (props, option) => (
-          <Box component="li" {...props}>
-            <strong>{option.symbol.toUpperCase()} -</strong>
-            {option.name}
-          </Box>
+          <OptionsContainer {...props}>
+            <SymbolText>{option.symbol.toUpperCase()}</SymbolText>
+            <NameText>{option.name}</NameText>
+          </OptionsContainer>
         )
       }
       renderInput={(params) => (
         <TextField
           {...params}
           label="Search"
+          color={"primary"}
           InputProps={{
             ...params.InputProps,
             endAdornment: (
