@@ -13,7 +13,7 @@ export const ChartContainer = styled.div`
   background: ${({ theme }) => theme['white']};
 `
 
-export const InputContainer = styled.div`
+export const OptionsContainer = styled.div`
   display: flex;
   justify-content: center;
 

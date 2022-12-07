@@ -1,10 +1,26 @@
-import { Button, TextField } from "@mui/material"
 import { ChangeEvent, useState } from "react"
-import { Area, AreaChart, CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts"
+import { useRouter } from "next/router"
+import { Button, TextField } from "@mui/material"
+import { priceFormatter } from "../../utils/formatter"
+
+import { ChartContainer, OptionsContainer } from "./style"
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis
+} from "recharts"
+
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import ShowChartIcon from '@mui/icons-material/ShowChart'
 import BarChartIcon from '@mui/icons-material/BarChart'
-import { priceFormatter } from "../../utils/formatter"
-import { ChartContainer, InputContainer } from "./style"
+import GridOnIcon from '@mui/icons-material/GridOn'
+import GridOffIcon from '@mui/icons-material/GridOff'
 
 interface SymbolDaily {
   name: string
@@ -12,17 +28,25 @@ interface SymbolDaily {
   date: string
 }
 
-interface ChartProps {
-  data: SymbolDaily[]
+type chartOptions = 'line' | 'monotone'
+
+interface ChartConfig {
+  type: chartOptions
+  isGridOn: boolean
 }
 
-type ChartType = 'line' | 'monotone'
+interface ChartProps {
+  data: SymbolDaily[]
+  name: string
+}
 
-export default function Chart({ data }: ChartProps) {
+export default function Chart({ data, name }: ChartProps) {
   const [chartData, setChartData] = useState(data)
   const [startDate, setStartDate] = useState('')
   const [finalDate, setFinalDate] = useState('')
-  const [chartType, setChartType] = useState<ChartType>('monotone')
+  const [chartOptions, setChartOptions] = useState<ChartConfig>({ type: 'monotone', isGridOn: false })
+
+  const { push } = useRouter()
 
   const onchangeStartDate = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setStartDate(event.target.value)
@@ -49,7 +73,18 @@ export default function Chart({ data }: ChartProps) {
   }
 
   const handleClickChartButtonType = () => {
-    setChartType(state => state === 'monotone' ? 'line' : 'monotone')
+    setChartOptions(state => state.type === 'monotone' ?
+      ({ ...state, type: 'line' }) :
+      ({ ...state, type: 'monotone' })
+    )
+  }
+
+  const handleClickChartButtonGrid = () => {
+    setChartOptions(state => ({ ...state, isGridOn: !state.isGridOn }))
+  }
+
+  const handleClickBackToHome = () => {
+    push('/')
   }
 
   const filterChartData = chartData.filter(item => {
@@ -60,9 +95,18 @@ export default function Chart({ data }: ChartProps) {
     if (item.date <= finalDate) return item
   })
 
+  const axisLabelConfig = { value: `preço - ${name}`, angle: -90, position: 'insideLeft' }
+
   return (
     <ChartContainer>
-      <InputContainer>
+      <OptionsContainer>
+        <Button
+          variant="outlined"
+          startIcon={<KeyboardBackspaceIcon />}
+          onClick={handleClickBackToHome}
+        >
+          Voltar
+        </Button>
         <TextField
           id="start-date"
           label="Data inicial"
@@ -85,35 +129,56 @@ export default function Chart({ data }: ChartProps) {
             shrink: true,
           }}
         />
-        <Button aria-label="chart" onClick={handleClickChartButtonType} variant="outlined" color={chartType === 'line' ? 'success' : 'primary'}>
+
+        <Button
+          aria-label="chart"
+          onClick={handleClickChartButtonType}
+          variant="outlined"
+          color={chartOptions.type === 'line' ? 'success' : 'primary'}
+        >
           {
-            chartType === 'line' ?
+            chartOptions.type === 'line' ?
               (<BarChartIcon />) :
               (<ShowChartIcon />)
           }
         </Button>
-      </InputContainer>
+
+        <Button
+          aria-label="chart"
+          onClick={handleClickChartButtonGrid}
+          variant="outlined"
+          color={chartOptions.isGridOn ? 'inherit' : 'primary'}
+        >
+          {
+            chartOptions.isGridOn ?
+              (<GridOffIcon />) :
+              (<GridOnIcon />)
+          }
+        </Button>
+      </OptionsContainer>
 
       {
-        chartType === 'monotone' ? (
+        chartOptions.type === 'monotone' ? (
           <AreaChart
             width={1000}
             height={300}
             data={filterChartData}
           >
             <XAxis dataKey="name" />
-            <YAxis />
+            {chartOptions.isGridOn && (<CartesianGrid />)}
+            <YAxis label={axisLabelConfig} />
             <Tooltip labelFormatter={formatTooltipLabel} formatter={formatTooltipPrice} />
-            <Legend />
+            <Legend verticalAlign="top" height={36} />
             <Area type="monotone" dataKey="value" stroke="#82ca9d" fill="#82ca9d" />
           </AreaChart>
         ) : (
           <LineChart width={1000} height={300} data={filterChartData}>
             <Line type="monotone" dataKey="value" />
+            {chartOptions.isGridOn && (<CartesianGrid />)}
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis label={axisLabelConfig} />
             <Tooltip labelFormatter={formatTooltipLabel} formatter={formatTooltipPrice} />
-            <Legend />
+            <Legend verticalAlign="top" height={36} />
           </LineChart>
         )
       }
