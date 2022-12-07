@@ -1,17 +1,17 @@
-import { Button, TextField } from "@mui/material"
+import { Button } from "@mui/material"
 import { GetServerSideProps } from "next"
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { SelectSearchAsync } from "../components/SelectSearchAsync"
 import { SymbolSearchOptions, useAlphaVantage } from "../context/AlphaVantageContext"
 import { alphavantageApi } from "../services/api"
 import { AlphaVantageGetSearchData } from "../services/types"
 import {
-  CardContainer,
   ContentContainer,
   HomeContainer,
   InputContainer
 } from "../styles/pages/home"
+import DefaultHeader from "../components/DefaultHeader"
+import Head from "next/head"
 
 interface HomeProps {
   initialOptions: SymbolSearchOptions[]
@@ -27,21 +27,25 @@ export default function Home({ initialOptions }: HomeProps) {
   }
 
   return (
-    <HomeContainer>
-      <ContentContainer>
-        <InputContainer>
-          <SelectSearchAsync initialOptions={initialOptions} />
+    <>
+      <Head>
+        <title>Challenger</title>
+      </Head>
 
-          <Button variant="outlined" onClick={handleSearchOnClick}>
-            Pesquisar
-          </Button>
-        </InputContainer>
+      <HomeContainer>
+        <DefaultHeader size="medium" />
 
-        <CardContainer>
-          <h1>soon</h1>
-        </CardContainer>
-      </ContentContainer>
-    </HomeContainer>
+        <ContentContainer>
+          <InputContainer>
+            <SelectSearchAsync initialOptions={initialOptions} />
+
+            <Button variant="outlined" onClick={handleSearchOnClick}>
+              Pesquisar
+            </Button>
+          </InputContainer>
+        </ContentContainer>
+      </HomeContainer>
+    </>
   )
 }
 

@@ -7,6 +7,8 @@ import {
 import { alphavantageApi } from "../../services/api"
 import { TimeSeriesDailyAdjustedInterface } from "../../services/types"
 import { DetailsContainer, DetailsContent } from "../../styles/pages/details"
+import Head from "next/head"
+import DefaultHeader from "../../components/DefaultHeader"
 
 const Chart = dynamic(() => import('../../components/Chart'), { ssr: false })
 
@@ -22,16 +24,21 @@ interface Details {
   symbol: string
 }
 
-export default function Detailts({ symbolDaily, name, symbol }: Details) {
+export default function Detailts({ symbolDaily, symbol }: Details) {
   return (
-    <DetailsContainer>
-      <header>
-        <h1>{name}</h1>
-      </header>
-      <DetailsContent>
-        <Chart data={symbolDaily} />
-      </DetailsContent>
-    </DetailsContainer>
+    <>
+      <Head>
+        <title> {symbol} | Challenger</title>
+      </Head>
+
+      <DetailsContainer>
+        <DefaultHeader size="medium" />
+
+        <DetailsContent>
+          <Chart data={symbolDaily} name={symbol} />
+        </DetailsContent>
+      </DetailsContainer>
+    </>
   )
 }
 

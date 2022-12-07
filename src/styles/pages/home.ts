@@ -14,8 +14,6 @@ export const ContentContainer = styled.div`
 
   padding: 2rem;
   width: 57.5rem;
-  height: 21.25rem;
-  gap: 1rem;
 
   position: absolute;
   top: 50%;
@@ -31,7 +29,6 @@ export const ContentContainer = styled.div`
 export const InputContainer = styled.section`
   display: grid;
   grid-template-columns: 80% 1fr;
-  height: 3.5rem;
   gap: 1rem;
 `
 
