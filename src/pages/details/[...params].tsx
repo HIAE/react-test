@@ -1,24 +1,37 @@
 import { GetServerSideProps } from "next"
-import { useAlphaVantage } from "../../context/AlphaVantageContext"
+import dynamic from "next/dynamic"
+import {
+  parseISO,
+  format,
+} from 'date-fns'
 import { alphavantageApi } from "../../services/api"
 import { TimeSeriesDailyAdjustedInterface } from "../../services/types"
+import { DetailsContainer, DetailsContent } from "../../styles/pages/details"
+
+const Chart = dynamic(() => import('../../components/Chart'), { ssr: false })
+
+interface SymbolDaily {
+  name: string
+  value: number
+  date: string
+}
 
 interface Details {
-  symbolDaily: TimeSeriesDailyAdjustedInterface
+  symbolDaily: SymbolDaily[]
   name: string
   symbol: string
 }
 
 export default function Detailts({ symbolDaily, name, symbol }: Details) {
   return (
-    <>
+    <DetailsContainer>
       <header>
         <h1>{name}</h1>
       </header>
-      <main>
-        <code>{JSON.stringify(symbolDaily)}</code>
-      </main>
-    </>
+      <DetailsContent>
+        <Chart data={symbolDaily} />
+      </DetailsContent>
+    </DetailsContainer>
   )
 }
 
@@ -46,9 +59,17 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     const { data } = await alphavantageApi.get<TimeSeriesDailyAdjustedInterface>(`query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=${process.env.ALPHAVANTAGE_SECRET_KEY}`)
 
+    const formatData = Object.keys(data["Time Series (Daily)"]).map(key => {
+      return {
+        name: format(parseISO(key), "dd/LL/yyyy"),
+        value: Number(data["Time Series (Daily)"][key]["4. close"]),
+        date: format(parseISO(key), "yyyy-LL-dd")
+      }
+    }).reverse()
+
     return {
       props: {
-        symbolDaily: data,
+        symbolDaily: formatData,
         name,
         symbol,
       }
