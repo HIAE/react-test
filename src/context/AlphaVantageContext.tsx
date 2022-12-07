@@ -1,4 +1,6 @@
-import { ReactNode, createContext, useContext, useState, useCallback } from 'react'
+import { ReactNode, useState, useCallback } from 'react'
+import { createContext, useContextSelector } from 'use-context-selector'
+
 
 export interface SymbolSearchOptions {
   name: string
@@ -36,12 +38,4 @@ export const AlphaVantageProvider = ({
       {children}
     </AlphaVantageContext.Provider>
   )
-}
-
-export const useAlphaVantage = () => {
-  const context = useContext(AlphaVantageContext)
-  if (!context) {
-    throw new Error('AlphavantageContext must be used within a AlphavantageProvider')
-  }
-  return context
 }

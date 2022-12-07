@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import { SelectSearchAsync } from "../components/SelectSearchAsync"
-import { SymbolSearchOptions, useAlphaVantage } from "../context/AlphaVantageContext"
+import { AlphaVantageContext, SymbolSearchOptions } from "../context/AlphaVantageContext"
 import { alphavantageApi } from "../services/api"
 import { AlphaVantageGetSearchData } from "../services/types"
 import {
@@ -12,6 +12,7 @@ import {
 } from "../styles/pages/home"
 import DefaultHeader from "../components/DefaultHeader"
 import Head from "next/head"
+import { useContextSelector } from "use-context-selector"
 
 interface HomeProps {
   initialOptions: SymbolSearchOptions[]
@@ -19,10 +20,10 @@ interface HomeProps {
 
 export default function Home({ initialOptions }: HomeProps) {
   const { push } = useRouter()
-  const { currentSymbolSelected } = useAlphaVantage()
+  const currentSymbolSelected = useContextSelector(AlphaVantageContext, (context) => context.currentSymbolSelected)
 
   const handleSearchOnClick = () => {
-    if (!currentSymbolSelected?.symbol) return console.warn('aaaaaaa')
+    if (!currentSymbolSelected?.symbol) return
     push(`/details/${currentSymbolSelected.symbol}/${currentSymbolSelected.name}`)
   }
 

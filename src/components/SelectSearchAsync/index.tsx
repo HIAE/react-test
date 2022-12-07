@@ -1,7 +1,8 @@
 import { Autocomplete, CircularProgress, FilterOptionsState, TextField } from "@mui/material"
 import axios from "axios"
 import { SyntheticEvent, useState } from "react"
-import { SymbolSearchOptions, useAlphaVantage } from "../../context/AlphaVantageContext"
+import { useContextSelector } from "use-context-selector"
+import { AlphaVantageContext, SymbolSearchOptions } from "../../context/AlphaVantageContext"
 import { NameText, OptionsContainer, SymbolText } from "./style"
 
 interface SelectSearchAsyncProps {
@@ -13,7 +14,7 @@ export const SelectSearchAsync = ({ initialOptions = [] }: SelectSearchAsyncProp
   const [options, setOptions] = useState<SymbolSearchOptions[]>(initialOptions)
   const [isSearchingSymbol, setIsSearchingSymbol] = useState(false)
 
-  const { changeCurrentSymbolSelectedValue } = useAlphaVantage()
+  const changeCurrentSymbolSelectedValue = useContextSelector(AlphaVantageContext, (context) => context.changeCurrentSymbolSelectedValue)
 
   function filterOptions(option: SymbolSearchOptions[], state: FilterOptionsState<SymbolSearchOptions>) {
     const { inputValue } = state
