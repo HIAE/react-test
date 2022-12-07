@@ -32,7 +32,7 @@ export default function Detailts({ symbolDaily, symbol }: Details) {
       </Head>
 
       <DetailsContainer>
-        <DefaultHeader size="medium" />
+        <DefaultHeader />
 
         <DetailsContent>
           <Chart data={symbolDaily} name={symbol} />

@@ -11,6 +11,20 @@ export const ChartContainer = styled.div`
   border-radius: 8px;
 
   background: ${({ theme }) => theme['white']};
+
+  overflow-y: scroll;
+
+  @media (max-width: 1024px){
+    width: 60rem;
+  }
+
+  @media (max-width: 768px){
+    width: 45rem;
+  }
+
+  @media (max-width: 425px){
+    width: 25rem;
+  }
 `
 
 export const OptionsContainer = styled.div`

@@ -13,7 +13,19 @@ export const ContentContainer = styled.div`
   grid-template-rows: 3.5rem 1fr; 
 
   padding: 2rem;
-  width: 75rem;
+  min-width: 75rem;
+
+  @media (max-width: 1024px){
+    min-width: 60rem;
+  }
+
+  @media (max-width: 768px){
+    min-width: 45rem;
+  }
+
+  @media (max-width: 425px){
+    min-width: 25rem;
+  }
 
   position: absolute;
   top: 50%;
@@ -30,16 +42,4 @@ export const InputContainer = styled.section`
   display: grid;
   grid-template-columns: 80% 1fr;
   gap: 1rem;
-`
-
-export const CardContainer = styled.section`
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid ${({ theme }) => theme['gray-300']};
-  border-radius: 8px;
 `

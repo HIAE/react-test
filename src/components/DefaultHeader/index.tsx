@@ -1,14 +1,10 @@
 import { Container, MarqueeContainer } from './style'
 import Marquee from '../Marquee'
 
-interface DefaultHeaderProps {
-  size?: 'small' | 'medium'
-}
-
-export default function DefaultHeader({ size = 'medium' }: DefaultHeaderProps) {
+export default function DefaultHeader() {
   return (
     <Container>
-      <MarqueeContainer size={size}>
+      <MarqueeContainer >
         <Marquee />
       </MarqueeContainer>
     </Container>

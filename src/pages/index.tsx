@@ -34,7 +34,7 @@ export default function Home({ initialOptions }: HomeProps) {
       </Head>
 
       <HomeContainer>
-        <DefaultHeader size="medium" />
+        <DefaultHeader />
 
         <ContentContainer>
           <InputContainer>

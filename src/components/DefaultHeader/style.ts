@@ -9,20 +9,23 @@ export const Container = styled.header`
   padding: 1rem;
 `
 
-const sizes = {
-  'small': '57.5rem',
-  'medium': '75rem',
-}
-
-interface MarqueeContainerProps {
-  size: 'small' | 'medium'
-}
-
-export const MarqueeContainer = styled.div<MarqueeContainerProps>`
+export const MarqueeContainer = styled.div`
   display: flex;
   align-items: center;
   background: ${({ theme }) => theme['gray-900']};
-  max-width: ${({ size }) => sizes[size]};
+  max-width: 75rem;
   border-radius: 8px;
   gap: 1rem;
+
+  @media (max-width: 1024px){
+    max-width: 60rem;
+  }
+
+  @media (max-width: 768px){
+    max-width: 45rem;
+  }
+
+  @media (max-width: 425px){
+    max-width: 25rem;
+  }
 `
