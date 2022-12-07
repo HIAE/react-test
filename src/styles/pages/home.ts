@@ -13,7 +13,7 @@ export const ContentContainer = styled.div`
   grid-template-rows: 3.5rem 1fr; 
 
   padding: 2rem;
-  width: 57.5rem;
+  width: 75rem;
 
   position: absolute;
   top: 50%;
