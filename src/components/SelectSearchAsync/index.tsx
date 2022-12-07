@@ -5,13 +5,13 @@ import { SymbolSearchOptions, useAlphaVantage } from "../../context/AlphaVantage
 import { NameText, OptionsContainer, SymbolText } from "./style"
 
 interface SelectSearchAsyncProps {
-  initialOptions: SymbolSearchOptions[]
+  initialOptions?: SymbolSearchOptions[]
 }
 
-export const SelectSearchAsync = ({ initialOptions }: SelectSearchAsyncProps) => {
-  const [open, setOpen] = useState(false);
-  const [options, setOptions] = useState<SymbolSearchOptions[]>(initialOptions);
-  const loading = open && options.length === 0;
+export const SelectSearchAsync = ({ initialOptions = [] }: SelectSearchAsyncProps) => {
+  const [open, setOpen] = useState(false)
+  const [options, setOptions] = useState<SymbolSearchOptions[]>(initialOptions)
+  const [isSearchingSymbol, setIsSearchingSymbol] = useState(false)
 
   const { changeCurrentSymbolSelectedValue } = useAlphaVantage()
 
@@ -22,6 +22,8 @@ export const SelectSearchAsync = ({ initialOptions }: SelectSearchAsyncProps) =>
 
   async function fetchOptionData(event: SyntheticEvent<Element, Event>, inputvalue: string) {
     if (!inputvalue) return
+    if (isSearchingSymbol) return
+    setIsSearchingSymbol(true)
 
     const { data } = await axios.get(`/api/search`, {
       params: {
@@ -33,6 +35,7 @@ export const SelectSearchAsync = ({ initialOptions }: SelectSearchAsyncProps) =>
       const mergedArray = [...state, ...data]
       return mergedArray.filter((element, post, self) => self.indexOf(element) == post)
     })
+    setIsSearchingSymbol(false)
   }
 
   return (
@@ -72,7 +75,7 @@ export const SelectSearchAsync = ({ initialOptions }: SelectSearchAsyncProps) =>
             ...params.InputProps,
             endAdornment: (
               <>
-                {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                {isSearchingSymbol ? <CircularProgress color="inherit" size={20} /> : null}
                 {params.InputProps.endAdornment}
               </>
             ),
