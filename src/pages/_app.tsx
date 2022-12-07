@@ -1,7 +1,7 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import { AlphaVantageProvider } from '../context/AlphaVantageContext'
-import { GlobalStyle } from '../styles/pages/global'
+import { GlobalStyle } from '../styles/global'
 import { defaultTheme } from '../styles/theme/default'
 
 export default function App({ Component, pageProps }: AppProps) {
