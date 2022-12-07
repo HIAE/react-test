@@ -24,7 +24,7 @@ import GridOffIcon from '@mui/icons-material/GridOff'
 
 interface SymbolDaily {
   name: string
-  value: number
+  price: number
   date: string
 }
 
@@ -171,11 +171,11 @@ export default function Chart({ data, name }: ChartProps) {
             <YAxis label={axisLabelConfig} />
             <Tooltip labelFormatter={formatTooltipLabel} formatter={formatTooltipPrice} />
             <Legend verticalAlign="top" height={36} />
-            <Area type="monotone" dataKey="value" stroke="#82ca9d" fill="#82ca9d" />
+            <Area type="monotone" dataKey="price" stroke="#82ca9d" fill="#82ca9d" />
           </AreaChart>
         ) : (
           <LineChart width={1000} height={300} data={filterChartData}>
-            <Line type="monotone" dataKey="value" />
+            <Line type="monotone" dataKey="price" />
             {chartOptions.isGridOn && (<CartesianGrid />)}
             <XAxis dataKey="name" />
             <YAxis label={axisLabelConfig} />

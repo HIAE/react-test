@@ -14,7 +14,7 @@ const Chart = dynamic(() => import('../../components/Chart'), { ssr: false })
 
 interface SymbolDaily {
   name: string
-  value: number
+  price: number
   date: string
 }
 
@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const formatData = Object.keys(data["Time Series (Daily)"]).map(key => {
       return {
         name: format(parseISO(key), "dd/LL/yyyy"),
-        value: Number(data["Time Series (Daily)"][key]["4. close"]),
+        price: Number(data["Time Series (Daily)"][key]["4. close"]),
         date: format(parseISO(key), "yyyy-LL-dd")
       }
     }).reverse()
