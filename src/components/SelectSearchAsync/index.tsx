@@ -1,6 +1,6 @@
-import { Autocomplete, Box, CircularProgress, FilterOptionsState, TextField } from "@mui/material"
+import { Autocomplete, CircularProgress, FilterOptionsState, TextField } from "@mui/material"
 import axios from "axios"
-import { SyntheticEvent, useEffect, useState } from "react"
+import { SyntheticEvent, useState } from "react"
 import { SymbolSearchOptions, useAlphaVantage } from "../../context/AlphaVantageContext"
 import { NameText, OptionsContainer, SymbolText } from "./style"
 

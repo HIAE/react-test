@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useMemo, useState } from "react"
 import { useRouter } from "next/router"
 import { Button, TextField } from "@mui/material"
 import { priceFormatter } from "../../utils/formatter"
@@ -87,13 +87,15 @@ export default function Chart({ data, name }: ChartProps) {
     push('/')
   }
 
-  const filterChartData = chartData.filter(item => {
-    if (!startDate) return item
-    if (item.date >= startDate) return item
-  }).filter(item => {
-    if (!finalDate) return item
-    if (item.date <= finalDate) return item
-  })
+  const filterChartData = useMemo(() => {
+    return chartData.filter(item => {
+      if (!startDate) return item
+      if (item.date >= startDate) return item
+    }).filter(item => {
+      if (!finalDate) return item
+      if (item.date <= finalDate) return item
+    })
+  }, [chartData, finalDate, startDate])
 
   const axisLabelConfig = { value: `preço - ${name}`, angle: -90, position: 'insideLeft' }
 

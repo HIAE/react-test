@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useContext, useState } from 'react'
+import { ReactNode, createContext, useContext, useState, useCallback } from 'react'
 
 export interface SymbolSearchOptions {
   name: string
@@ -21,10 +21,10 @@ export const AlphaVantageProvider = ({
 }: AlphaVantageProviderProps) => {
   const [currentSymbolSelected, setCurrentSymbolSelected] = useState({} as SymbolSearchOptions)
 
-  function changeCurrentSymbolSelectedValue(newValue: SymbolSearchOptions | null) {
+  const changeCurrentSymbolSelectedValue = useCallback((newValue: SymbolSearchOptions | null) => {
     if (!newValue) return
     setCurrentSymbolSelected(newValue)
-  }
+  }, [])
 
   return (
     <AlphaVantageContext.Provider
