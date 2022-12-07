@@ -12,18 +12,22 @@ export const ChartContainer = styled.div`
 
   background: ${({ theme }) => theme['white']};
 
-  overflow-y: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
 
   @media (max-width: 1024px){
     width: 60rem;
+    overflow-x: scroll;
   }
 
   @media (max-width: 768px){
     width: 45rem;
+    overflow-x: scroll;
   }
 
   @media (max-width: 425px){
     width: 25rem;
+    overflow-x: scroll;
   }
 `
 
