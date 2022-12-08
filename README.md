@@ -15,6 +15,7 @@ Este projeto foi criado para a participação no processo seletivo do Hospital I
 + [ReCharts](https://recharts.org/en-US/)
 + [Styled-Components](https://styled-components.com/)
 + [Use-Context-Selector](https://github.com/dai-shi/se-context-selector)
++ [Jest](https://jestjs.io/pt-BR/)
 
 ---
 
