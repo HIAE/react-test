@@ -100,7 +100,7 @@ export default function Chart({ data, name }: ChartProps) {
   const axisLabelConfig = { value: `preço - ${name}`, angle: -90, position: 'insideLeft' }
 
   return (
-    <ChartContainer>
+    <ChartContainer data-testid="chart">
       <OptionsContainer>
         <Button
           variant="outlined"
@@ -137,11 +137,12 @@ export default function Chart({ data, name }: ChartProps) {
           onClick={handleClickChartButtonType}
           variant="outlined"
           color={chartOptions.type === 'line' ? 'success' : 'primary'}
+          data-testid="button-chart-type"
         >
           {
             chartOptions.type === 'line' ?
-              (<BarChartIcon />) :
-              (<ShowChartIcon />)
+              (<BarChartIcon data-testid="line-icon" />) :
+              (<ShowChartIcon data-testid="monotone-icon" />)
           }
         </Button>
 
@@ -150,11 +151,12 @@ export default function Chart({ data, name }: ChartProps) {
           onClick={handleClickChartButtonGrid}
           variant="outlined"
           color={chartOptions.isGridOn ? 'inherit' : 'primary'}
+          data-testid="grid-on-or-off-button"
         >
           {
             chartOptions.isGridOn ?
-              (<GridOffIcon />) :
-              (<GridOnIcon />)
+              (<GridOffIcon data-testid="grid-off" />) :
+              (<GridOnIcon data-testid="grid-on" />)
           }
         </Button>
       </OptionsContainer>
