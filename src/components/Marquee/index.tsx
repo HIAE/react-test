@@ -20,24 +20,26 @@ const marqueeData = [
 
 export default function MarqueeSymbolInfo() {
   return (
-    <Marquee velocity={15}>
-      {
-        marqueeData.map(marquee => (
-          <Item key={marquee.symbol}>
-            {marquee.symbol}
-            <Price negative={marquee?.negative}>
-              {marquee.variation}%
-              {
-                marquee?.negative ? (
-                  <ArrowDropDownIcon />
-                ) : (
-                  <ArrowDropUpIcon />
-                )
-              }
-            </Price>
-          </Item>
-        ))
-      }
-    </Marquee>
+    <div data-testid="marquee">
+      <Marquee velocity={15} >
+        {
+          marqueeData.map(marquee => (
+            <Item key={marquee.symbol}>
+              {marquee.symbol}
+              <Price negative={marquee?.negative}>
+                {marquee.variation}%
+                {
+                  marquee?.negative ? (
+                    <ArrowDropDownIcon />
+                  ) : (
+                    <ArrowDropUpIcon />
+                  )
+                }
+              </Price>
+            </Item>
+          ))
+        }
+      </Marquee>
+    </div>
   )
 }
