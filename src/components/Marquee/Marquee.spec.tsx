@@ -1,6 +1,5 @@
-import MarqueeSymbolInfo from './index'
+import MarqueeSymbolInfo from '.'
 import { render, screen } from '@testing-library/react'
-
 
 describe('Marquee component', () => {
   it('renders correctly', () => {
