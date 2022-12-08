@@ -3,7 +3,7 @@ import Marquee from '../Marquee'
 
 export default function DefaultHeader() {
   return (
-    <Container>
+    <Container data-testid="header">
       <MarqueeContainer >
         <Marquee />
       </MarqueeContainer>
