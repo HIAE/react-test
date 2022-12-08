@@ -42,6 +42,7 @@ export const SelectSearchAsync = ({ initialOptions = [] }: SelectSearchAsyncProp
   return (
     <Autocomplete
       id="search"
+      data-testid="select-search-async"
       sx={{ width: '100%' }}
       open={open}
       onOpen={() => {
